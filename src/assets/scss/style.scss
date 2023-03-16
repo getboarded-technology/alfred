@@ -1,0 +1,21 @@
+/*================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+@import "./variables/variables";
+// mixins
+@import "./abstracts/mixins";
+// theme based scss
+@import "./base//dark-theme.scss";
+@import "./base/light-theme.scss";
+@import "@core/scss/vue/libs/vue-select.scss";
+:root {
+  --org-theme-color: #{$org-theme-color};
+  --org-theme-color--low: #{$org-theme-color--low};
+}
+* {
+  @include applythemeColor(var(--org-theme-color));
+}

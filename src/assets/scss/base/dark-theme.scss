@@ -1,0 +1,35 @@
+.dark-theme {
+  .pill {
+    &-new {
+      background: $success-900;
+      color: $success-500;
+    }
+    &-listening{
+      background: $warning-900;
+      color: $warning-500;
+    }
+  }
+
+  .suggestion {
+    &-heading {
+      color: $light-primary;
+    }
+  }
+
+  .custom {
+    &-border-btn {
+      border: 1px solid $gray-600;
+    }
+  }
+
+  .course {
+    &__content {
+      &__title {
+        color: $gray-25;
+      }
+      &__desc {
+        color: $gray-400;
+      }
+    }
+  }
+}

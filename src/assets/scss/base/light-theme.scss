@@ -1,0 +1,142 @@
+.custom {
+  &-btn {
+    padding: 0.85em;
+    border-radius: 5px;
+    &-text {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: $light-primary;
+    }
+  }
+  &-border-btn {
+    border: 1px solid #d8d6de;
+    border-radius: 0.357rem;
+    background: none !important;
+    &-text {
+      color: $gray-500;
+    }
+  }
+}
+
+.padding--x {
+  padding-left: 4.5em;
+  padding-right: 4.5em;
+}
+
+.pill {
+  padding: 0.3em 0.6em;
+  border-radius: 1em;
+
+  &-new {
+    background: $success-50;
+    color: $success-700;
+  }
+  &-listening {
+    background: $warning-50;
+    color: $warning-700;
+  }
+}
+
+.heading {
+  font-size: 3.25em;
+}
+
+.subheading {
+  font-size: 1.25em;
+}
+
+.course {
+  &__content {
+    &__title {
+      color: $gray-900;
+      font-weight: 600;
+    }
+    &__desc {
+      color: $gray-400;
+    }
+  }
+}
+
+.custom-control-input:not(:checked) ~ .custom-control-label:before {
+  background-color: transparent !important;
+}
+
+.company {
+  &-logo {
+    width: 13.5em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .custom-btn {
+    padding: 0.83em;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .padding--x {
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+  }
+  .row {
+    margin: 0;
+  }
+  .col-md-3,
+  .col-md-4,
+  .col-md-6,
+  .col-md-5,
+  .col-md-9,
+  .col-md-12,
+  .col-sm-12,
+  .col-sm-6,
+  .col,
+  .col-12 {
+    padding: 0;
+  }
+
+  .custom-btn {
+    padding: 0.56em;
+    &-text {
+      font-size: 1em;
+    }
+  }
+
+  .heading {
+    font-size: 2.5em;
+  }
+
+  .subheading {
+    font-size: 1.1em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .company {
+    &-logo {
+      width: 11em;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .padding--x {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+  .custom-btn {
+    padding: 0.5em;
+  }
+
+  .heading {
+    font-size: 1.5em;
+  }
+
+  .subheading {
+    font-size: 1em;
+  }
+
+  .company {
+    &-logo {
+      width: 9.5em;
+    }
+  }
+}

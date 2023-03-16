@@ -1,0 +1,30 @@
+@mixin applythemeColor($color-primary: #f2c046) {
+  .link-hover:hover {
+    color: $color-primary;
+  }
+  .custom-btn {
+    background: $color-primary;
+  }
+
+  .course {
+    &__content {
+      &__use {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .vs--open .vs__dropdown-toggle {
+    border-color: $color-primary;
+    border-bottom-color: $color-primary;
+  }
+
+  .vs__open-indicator {
+    fill: #3c3c3c80;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::before {
+    border-color: $color-primary;
+    background-color: $color-primary;
+  }
+}
