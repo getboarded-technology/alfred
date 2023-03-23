@@ -1,0 +1,196 @@
+@import '../../base.scss';
+
+.boardPayment {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  column-gap: 3rem;
+  &-section1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+    padding: 2rem;
+    background-color: $white;
+    border-radius: $border-radius;
+  }
+  &-section2 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem;
+    background-color: $white;
+    border-radius: $border-radius;
+    row-gap: 0.3rem;
+  }
+  &-heading {
+    font-weight: 600;
+    font-size: 1.428rem;
+    color: $gray-900;
+  }
+  &-desc {
+    font-weight: 500;
+    font-size: 1.142rem;
+    color: $gray-500;
+    margin-top: 0.5rem;
+  }
+  &-walletCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    border: $gray-border;
+    border-radius: $border-radius;
+    margin-top: 2rem;
+    &-walletLogo {
+      width: 4rem;
+      height: auto;
+    }
+    &-addIcon {
+      padding: 0.3rem;
+      background-color: $primary;
+      border-radius: 50%;
+      margin-left: auto;
+      cursor: pointer;
+      margin-right: 2rem;
+    }
+    &-textContent {
+      margin-left: 2rem;
+    }
+    &-amount {
+      font-size: 1.571rem;
+      font-weight: 600;
+      color: $gray-900;
+    }
+    &-secondary {
+      font-size: 1.142rem;
+      font-weight: 500;
+      color: $gray-400;
+      margin-top: 0.3rem;
+    }
+  }
+
+  &-card-cont {
+    display: flex;
+    flex-direction: column;
+    &-heading {
+      margin: 1rem 0;
+      font-size: 1.428rem;
+      font-weight: 600;
+      color: $gray-900;
+    }
+  }
+
+  &-appCard {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: $gray-border;
+    border-radius: $border-radius;
+    &-appImg {
+      width: 3rem;
+      height: auto;
+    }
+    &-title {
+      font-weight: 600;
+      font-size: 1.285rem;
+      color: $gray-900;
+      margin-left: 2rem;
+    }
+    &-desc {
+      font-weight: 400;
+      font-size: 1.142rem;
+      color: $gray-500;
+      margin-left: auto;
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    &-heading {
+      font-size: 1.142rem;
+      font-weight: 600;
+      color: $gray-500;
+      &.gray900 {
+        color: $gray-900;
+      }
+    }
+    &-amount {
+      font-size: 1.142rem;
+      font-weight: 500;
+      color: $gray-400;
+      &.gray900 {
+        color: $gray-900;
+      }
+    }
+  }
+  &-item-text {
+    font-size: 1.142rem;
+    font-weight: 700;
+    color: $gray-900;
+  }
+
+  &-btn {
+    margin-top: auto;
+    margin-left: auto;
+  }
+}
+
+.dark-layout {
+  .boardPayment {
+    &-section1 {
+      background-color: $dark-bg-tertiary;
+    }
+    &-section2 {
+      background-color: $dark-bg-tertiary;
+    }
+    &-heading {
+      color: $gray-300;
+    }
+    &-desc {
+      color: $gray-400;
+    }
+
+    &-walletCard {
+      &-amount {
+        color: $gray-300;
+      }
+    }
+
+    &-card-cont {
+      &-heading {
+        color: $gray-300;
+      }
+    }
+
+    &-appCard {
+      &-title {
+        color: $gray-300;
+      }
+      &-desc {
+        color: $gray-400;
+      }
+    }
+
+    &-item {
+      &-heading {
+        color: $gray-400;
+        &.gray900 {
+          color: $gray-300;
+        }
+      }
+      &-amount {
+        color: $gray-400;
+        &.gray900 {
+          color: $gray-300;
+        }
+      }
+    }
+    &-item-text {
+      color: $gray-300;
+    }
+  }
+}

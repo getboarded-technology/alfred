@@ -1,0 +1,120 @@
+.add-skill {
+  background-color: $white;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  padding: 1rem;
+  &-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: $gray-border;
+    &-img {
+      width: 5rem;
+      height: auto;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    &-detail {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem;
+      justify-content: center;
+    }
+    &-name {
+      font-weight: 700;
+      font-size: 1.714rem;
+      color: $gray-900;
+    }
+    &-email {
+      font-weight: 400;
+      font-size: 1.142rem;
+      color: $gray-400;
+    }
+    &-arrow {
+      margin-left: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: $primary-100;
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+      cursor: pointer;
+      &-icon {
+        width: 70%;
+        height: auto;
+        color: $primary-600;
+      }
+    }
+  }
+  &-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  &-search-icon {
+    width: 20rem;
+    height: auto;
+  }
+  &-skill-text {
+    font-weight: 600;
+    font-size: 1.428rem;
+    color: $gray-900;
+    margin-top: 1rem;
+  }
+  &-desc-text {
+    font-weight: 400;
+    font-size: 1.142rem;
+    color: $gray-500;
+    margin-top: 1rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    &-profile {
+      padding: 0.5rem 0;
+      &-img {
+        width: 3rem;
+        height: auto;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      &-detail {
+        margin-left: 0.5rem;
+      }
+      &-name {
+        font-size: 1.5rem;
+      }
+      &-email {
+        font-size: 1rem;
+      }
+      &-arrow {
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+        &-icon {
+          width: 70%;
+        }
+      }
+    }
+    &-search-icon {
+      width: 15rem;
+    }
+    &-skill-text {
+      font-size: 1.3rem;
+    }
+    &-desc-text {
+      font-size: 1rem;
+    }
+  }
+}
+
+.dark-layout {
+  .add-skill {
+    background-color: $dark-bg-secondary;
+  }
+}

@@ -1,0 +1,37 @@
+@import "../variables/variables";
+
+.secondary-dashboard {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    grid-template-areas:
+      'sideNav main';
+    height: 100vh;
+    padding: 2rem;
+
+    &-sidenav {
+      grid-area: sideNav;
+      position: relative;
+    }
+  
+    &-main {
+      grid-area: main;
+    }
+  
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: 6rem 1fr;
+      grid-template-areas:
+      'sideNav main';
+      &-main {
+        padding: 0rem;
+        margin-top: 0.5rem;
+      }
+      &-header {
+        padding: 0rem;
+      }
+    }
+  
+    @media screen and (max-width: 425px) {
+      grid-template-columns: 6rem 1fr;
+    }
+  }
+  

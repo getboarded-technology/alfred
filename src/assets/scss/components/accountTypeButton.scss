@@ -1,0 +1,55 @@
+.account-type-button {
+  padding: 2rem;
+  border: $gray-border;
+  min-width: 22rem;
+  width:30rem;
+  max-width: 32rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0.7rem;
+  margin: 2rem 0;
+  &-logo {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+  }
+  &-heading {
+    font-size: 1.43rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin-left: 1rem;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    min-width: 18rem;
+    width: 18rem;
+    max-width: 18rem;
+    margin: 1rem 0.5rem;
+    text-align: center;
+    &-heading {
+      margin-left: 0rem;
+      margin-top: 1rem;
+    }
+    &-logo {
+      width: 4rem;
+      height: 4rem;
+      margin-right: 0rem;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.active {
+    background-color: $primary-25;
+    border: 1px solid $primary-400;
+  }
+}
+
+.dark-layout {
+  .user-profile {
+    .active {
+       background-color: $dark-bg-secondary;
+    }
+  }
+}

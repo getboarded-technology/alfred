@@ -25,3 +25,68 @@ $warning-500: #f79009;
 $theme-dark-input-bg: $dark-primary;
 $theme-dark-input-border-color: $gray-600;
 $vs-state-active-bg:$org-theme-color--low;
+
+//  ================================================================================================
+//  ? TIP:  It is recommended to use this file for overriding bootstrap variables.
+//  ================================================================================================
+
+$font-family-sans-serif: 'Inter', sans-serif !default;
+$font-family-monospace: 'Inter', sans-serif !default;
+
+// Color system
+$white: #fff !default;
+$gray-50: #f9fafb !default;
+$gray-100: #f2f4f7 !default; // $gray-lightest
+$gray-200: #eaecf0 !default; // $gray-lighter
+$gray-300: #d0d5dd !default; // $gray-light
+$gray-400: #98a2b3 !default;
+$gray-500: #667085;
+$gray-600: #475467 !default; // $gray
+$gray-700: #344054 !default;
+$gray-800: #1d2939 !default; // $gray-dark
+$gray-900: #101828 !default;
+$black: #22292f !default; // 231f48 22292f
+
+// Dark mode colors palette
+$dark-bg: #171717;
+$dark-bg-secondary: #212121 !default;
+$dark-bg-tertiary: #2a2a2a !default;
+$gray-50-dark: rgba(42, 42, 42, 0.5);
+
+$purple: #7367f0 !default;
+$green: #28c76f !default; //$success
+$success-500: #12b76a;
+$success-25: #F6FEF9;
+
+$blue: #00cfe8 !default; //$info
+$blue-400: #53b1fd !default;
+$blue-800: #1849a9 !default;
+
+$orange: #ff9f43 !default; //$warning
+
+$red: #ea5455 !default; //$danger
+$yellow: #f2c046 !default; //$primary
+
+$primary-background: #f9fafb;
+$primary: #f2c046 !default;
+$primary-25: #fefcf9 !default;
+$primary-50: #fdf9f2 !default;
+$primary-100: #fcf3e6 !default;
+$primary-400: #f4ce82 !default;
+$primary-500: #f2c046 !default;
+$primary-600: #d8ab3e !default;
+$primary-700: #ad7400 !default;
+
+$secondary: #667085 !default;
+$secondary-300: #90a3bf !default;
+$secondary-100: #b5bed2 !default;
+
+$info: $blue !default;
+$warning: $orange !default;
+$light: $gray-50 !default;
+$dark: #4b4b4b !default;
+
+//Border
+$gray-border: 1px solid $gray-200;
+$border-radius: 0.5rem;
+$box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);

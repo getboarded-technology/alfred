@@ -1,0 +1,197 @@
+.profile {
+  padding: 4rem;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  &-section1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: $white;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+  }
+  &-section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+    margin-left: 2rem;
+    border-radius: 1rem;
+    background-color: $white;
+    padding: 2rem;
+    position: relative;
+    &-heading {
+      color: $gray-900;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+    &-subheading {
+      color: $gray-500;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    &-rocket {
+      display: none;
+      position: absolute;
+      width: 35vw;
+      height: auto;
+      object-fit: fill;
+      left: 0;
+      bottom: 0;
+    }
+  }
+  &-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $gray-900;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+  }
+  &-subheading {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: $gray-500;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    &-br {
+      display: none;
+    }
+  }
+  &-rocket {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  &-card {
+    padding: 2rem;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    border-radius: 1rem;
+    border: 1px solid $gray-200;
+    &-logo {
+      border-radius: 100%;
+      width: 5rem;
+      padding: 1rem;
+      background-color: $primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-content {
+      margin-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: $gray-900;
+    }
+    &-heading {
+      color: $gray-900;
+      font-weight: 600;
+    }
+    &-subheading {
+      color: $gray-500;
+      font-weight: 400;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-hr {
+    display: none;
+  }
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    padding: 0 0rem;
+    &-section1 {
+      margin-bottom: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-bottom: 0;
+      flex: 0;
+    }
+    &-section2 {
+      margin-left: 0;
+      width: 100%;
+      flex: 1;
+      justify-content: flex-start;
+      margin-top: 0;
+      padding-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      &-heading {
+        display: none;
+      }
+      &-rocket {
+        display: block;
+      }
+    }
+    &-heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: $gray-900;
+      margin-top: 3rem;
+      margin-bottom: 0rem;
+      height: 100%;
+      &-br {
+        display: none;
+      }
+    }
+    &-subheading {
+      font-size: 1.14rem;
+      font-weight: 500;
+      color: $gray-500;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      &-br {
+        display: block;
+      }
+      &-br1 {
+        display: none;
+      }
+    }
+    &-card {
+      width: 100%;
+      &-heading {
+        font-size: 1.2rem;
+      }
+      &-subheading {
+        font-size: 1rem;
+      }
+      &-logo {
+        width: 4rem;
+        padding: 0rem;
+      }
+    }
+    &-rocket {
+      display: none;
+    }
+    &-hr {
+      display: block;
+      height: 1px;
+      background-color: $gray-200;
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 1008px) {
+    &-card {
+      width: 80%;
+    }
+  }
+}
+
+.dark-layout {
+  .profile {
+    &-section1 {
+      background-color: $dark-bg-secondary;
+    }
+    &-section2 {
+      background-color: $dark-bg-secondary;
+    }
+  }
+}

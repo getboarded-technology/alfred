@@ -1,0 +1,110 @@
+.viewBoardTemplate {
+  width: 50vw;
+  height: 70vh;
+  background-color: $white;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  padding: 2rem;
+  &-section1 {
+    width: 50%;
+    padding-right: 4rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &-section2 {
+    width: 50%;
+    background-color: $gray-50;
+    border-radius: $border-radius;
+    padding: 1rem;
+  }
+  &-heading {
+    font-size: 1.714rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin-top: 2rem;
+  }
+  &-description {
+    font-size: 1.142rem;
+    font-weight: 400;
+    color: $gray-500;
+    margin-top: 2rem;
+  }
+  &-cont-bttn {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+  }
+  &-bttn {
+    width: 100%;
+  }
+  &-config-text {
+    font-size: 1.428rem;
+    font-weight: 600;
+    color: $gray-900;
+  }
+  &-board-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $gray-400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin: 1rem 0;
+  }
+  &-app {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1.5rem 0;
+    &-img {
+      width: 2.5rem;
+      height: auto;
+    }
+    &-title {
+      color: $gray-900;
+      font-size: 1.285rem;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+    &-tick {
+      width: 1.6rem;
+      height: auto;
+      padding: 0.2rem;
+    }
+    &-included {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: $gray-200;
+      padding-right: 0.5rem;
+      border-radius: 1rem;
+      margin-left: auto;
+      &-text {
+        font-size: 1rem;
+        font-weight: 500;
+        color: $gray-900;
+      }
+    }
+    &-switch {
+      margin-left: auto;
+    }
+  }
+}
+
+.dark-layout {
+  .viewBoardTemplate {
+    background-color: $dark-bg-tertiary;
+    &-section2 {
+      background-color: $dark-bg-secondary;
+    }
+    &-app {
+      &-title {
+        color: $gray-300;
+      }
+    }
+  }
+}

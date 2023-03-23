@@ -1,0 +1,89 @@
+.login {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: row;
+
+  &-section1 {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 5rem 3rem;
+    &-content {
+      margin-top: 7.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &-section2 {
+    display: flex;
+    flex-direction: column;
+    background-color: $gray-100;
+    width: 70%;
+  }
+  &-heading {
+    font-weight: 600;
+    color: $gray-900;
+    font-size: 2.5rem;
+  }
+  &-subheading {
+    font-weight: 400;
+    color: $gray_500;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  &-form {
+    margin-top: 2rem;
+  }
+  &-btn {
+    margin: 1rem 0rem;
+    &-text {
+      color: $gray-700;
+    }
+  }
+  
+  &-indicator{
+    width: 5rem;
+    height: 0.5rem;
+    border-radius: 20%;
+    background-color:$primary;
+    margin-right: 1rem;
+    &-container{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 1rem;
+      position: absolute;
+      bottom: 5%;
+    }
+    &:hover{
+      cursor: pointer;
+    }
+
+  }
+
+  @media screen and (max-width: 990px) {
+    flex-direction: column;
+    &-section1 {
+      width: 100%;
+      &-content {
+        margin-top: 5rem;
+      }
+    }
+  
+  }
+}
+
+.dark-layout {
+  .login {
+    &-btn {
+      &-text {
+        color: white !important;
+      }
+    }
+    &-section2 {
+      background-color: $dark-bg-secondary;
+    }
+  }
+}

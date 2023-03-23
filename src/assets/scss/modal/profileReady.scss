@@ -1,0 +1,29 @@
+.profile-ready {
+  width: 40vw;
+  background-color: $gray-50;
+  border-radius: 1rem;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  &-img {
+    width: 12rem;
+    height: auto;
+  }
+  &-heading{
+    font-size: 1.714rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin: 1rem 0;
+  }
+  &-dec{
+    font-size: 1.142rem;
+    font-weight: 400;
+    color: $gray-500;
+    margin: 1rem 0;
+  }
+  &-btn{
+    margin-top: 3rem;
+  }
+}

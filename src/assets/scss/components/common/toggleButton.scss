@@ -1,0 +1,36 @@
+/* Define some variables for the toggle */
+$toggle-width: 40px;
+$toggle-height: 20px;
+$toggle-bg-color: #ccc;
+$toggle-slider-color: #fff;
+$toggle-checked-bg-color: #f2c046;
+
+/* Create the toggle container */
+.toggle {
+  width: $toggle-width;
+  height: $toggle-height;
+  background-color: $toggle-bg-color;
+  border-radius: $toggle-height;
+  position: relative;
+  &-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $toggle-height;
+    height: $toggle-height;
+    background-color: $toggle-slider-color;
+    border-radius: 50%;
+    transition: all 0.4s;
+  }
+
+  & input:checked + .toggle-slider {
+    left: $toggle-width - $toggle-height;
+    background-color: $toggle-checked-bg-color;
+  }
+  & input:checked {
+    background-color: red;
+  }
+  & input {
+    display: none;
+  }
+}

@@ -1,0 +1,16 @@
+.board {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+//   background-color: red;
+
+  &-card-section {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    column-gap: 2rem;
+    justify-content: space-evenly;
+  }
+}

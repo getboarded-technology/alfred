@@ -1,0 +1,22 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: $white;
+    &-heading{
+        font-size: 1.285rem;
+        font-weight: 600;
+        color: $gray-500;
+        margin-bottom: 0.5rem;
+    }
+    &-text{
+        font-size:0.857rem;
+        font-weight: 400;
+        color: $gray-500;
+        margin-bottom: 0.5rem;
+    }
+
+}

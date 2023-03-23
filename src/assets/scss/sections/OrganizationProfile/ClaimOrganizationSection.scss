@@ -1,0 +1,124 @@
+.claimOrgSection {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &-heading {
+    font-size: 1.714rem;
+    font-weight: 700;
+    color: $gray-900;
+  }
+  &-description {
+    font-size: 1.142rem;
+    font-weight: 400;
+    color: $gray-500;
+  }
+  &-content {
+    width: 70%;
+    margin-top: 2rem;
+  }
+  &-label {
+    font-size: 1.142rem;
+    font-weight: 600;
+    color: $gray-900;
+  }
+  &-input {
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom-right-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    &-postfix {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $gray-200;
+      font-size: 1.142rem;
+      font-weight: 500;
+      color: $gray-400;
+      padding: 0 3rem;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  &-des {
+    margin-top: 2rem;
+    background-color: $gray-200;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    &-indicator {
+      width: 0.5rem;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background-color: $primary-500;
+    }
+    p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: $gray-500;
+    }
+  }
+  &-bttn {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    & > * {
+      margin-left: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    &-content {
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 425px) {
+    &-input {
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom-right-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      &-postfix {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $gray-200;
+        font-size: 1rem;
+        font-weight: 500;
+        color: $gray-400;
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+.dark-layout {
+  .claimOrgSection {
+    &-input {
+      &-postfix {
+        background-color: $dark-bg-tertiary;
+        color: $white;
+      }
+    }
+  }
+}

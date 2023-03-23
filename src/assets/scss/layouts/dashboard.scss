@@ -1,0 +1,46 @@
+@import "../variables/variables";
+.dashboard {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas:
+    'sideNav header'
+    'sideNav main'
+    'sideNav main';
+  height: 100vh;
+  padding: 2rem;
+  &-header {
+    grid-area: header;
+    padding: 1rem;
+  }
+
+  &-sidenav {
+    grid-area: sideNav;
+    display: flex;
+  }
+
+  &-main {
+    grid-area: main;
+    padding: 1rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding: 0rem;
+    grid-template-columns: 6rem 1fr;
+    grid-template-areas:
+      'sideNav header'
+      'main main'
+      'main main';
+    &-main {
+      padding: 0rem;
+      margin-top: 0.5rem;
+    }
+    &-header {
+      padding: 0rem;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 6rem 1fr;
+  }
+}

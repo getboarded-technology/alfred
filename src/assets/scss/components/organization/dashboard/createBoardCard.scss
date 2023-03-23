@@ -1,0 +1,34 @@
+.createBoardCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4rem;
+  background-color: $white;
+  margin: 1rem 0rem;
+  &-logo {
+    width: 10rem;
+    height: auto;
+    object-fit: fill;
+  }
+  &-content {
+    width: 70%;
+    margin-left: 4rem;
+  }
+  &-title {
+    font-size: 1.714rem;
+    font-weight: 700;
+    color: $gray-900;
+  }
+  &-desc {
+    font-size: 1.142rem;
+    font-weight: 400;
+    color: $gray-500;
+    margin-top: 1rem;
+  }
+  &-addIcon{
+    width: 4rem;
+    height: auto;
+    object-fit: fill;
+    margin-left: auto;
+  }
+}

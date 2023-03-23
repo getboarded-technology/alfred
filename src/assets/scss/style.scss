@@ -12,10 +12,73 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 @import "./base//dark-theme.scss";
 @import "./base/light-theme.scss";
 @import "@core/scss/vue/libs/vue-select.scss";
+
+
+
+//@Common Components
+@import './components/common/radioButton.scss';
+@import './components/common/profileUpload.scss';
+
+//@ Modal
+@import './modal/basic.scss';
+@import './modal/scanResume.scss';
+@import './modal/resumeData.scss';
+@import './modal/wrongData.scss';
+@import './modal/profileReady.scss';
+@import './modal/profileUploadModal.scss';
+@import './modal/recordPitchModal.scss';
+@import './modal/board/viewBoardTemplate.scss';
+//@ Components';
+@import './components/card.scss';
+@import './components/smallCard.scss';
+@import './components/accountTypeButton.scss';
+@import './components/user/dashboard/home/company-card.scss';
+@import './components/user/dashboard/home/task-card.scss';
+@import './components/user/dashboard/home/add-skill-card.scss';
+@import './components/user/dashboard/home/wallet-card.scss';
+@import './components/common/recordPitch.scss';
+@import './components/organization/dashboard/companyInfoCard.scss';
+@import './components/organization/dashboard/createBoardCard.scss';
+@import './components/board/boardTemplateCard.scss';
+@import './components/common/toggleButton.scss';
+//@ Sections
+//` User Profile
+@import './sections/UserProfile/resumeSection.scss';
+@import './sections/UserProfile/accountSection.scss';
+@import './sections/UserProfile/basicInfoSection.scss';
+@import './sections/UserProfile/personalitySection.scss';
+//` Organization Profile
+@import './sections/OrganizationProfile/OrganizationSection.scss';
+@import './sections/OrganizationProfile/ClaimOrganizationSection.scss';
+@import './sections/OrganizationProfile/OrganizationFormSection.scss';
+@import './sections/OrganizationProfile/ReviewCompanyInfo.scss';
+@import './sections/OrganizationProfile/LaunchOrganizationSection.scss';
+//` Board
+@import './sections/board/BoardTemplateSection.scss';
+
+//@ Screen
+@import './pages/login.scss';
+@import './pages/otp.scss';
+@import './pages/profile.scss';
+@import './pages/user-profile.scss';
+@import './pages/organization-profile.scss';
+@import './pages/user/home.scss';
+@import './pages/organization/organization-home.scss';
+@import './pages/organization/organization-dashboard.scss';
+@import './pages/organization/board.scss';
+
+// layouts
+@import './layouts/dashboard.scss';
+@import './layouts/header.scss';
+@import './layouts/secondary-dashboard.scss';
+@import './layouts/sideBar.scss';
+
 :root {
   --org-theme-color: #{$org-theme-color};
   --org-theme-color--low: #{$org-theme-color--low};
 }
 * {
   @include applythemeColor(var(--org-theme-color));
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+  // outline:2px solid red;
 }

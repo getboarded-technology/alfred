@@ -1,0 +1,99 @@
+.resume-section {
+  min-width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  display: flex;
+  &-heading {
+    font-size:1.714rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin-top: 1.5rem;
+  }
+  &-details {
+    font-size: 1.142rem;
+    font-weight: 400;
+    color: $gray-500;
+    margin-top: 1rem;
+  }
+  &-drop-container {
+    width: 100%;
+    background-color: $primary-50;
+    padding: 2rem;
+    margin-top: 4rem;
+    &-active {
+      border: 2px dashed $primary-500;
+      // background-color: red;
+    }
+  }
+  &-dropzone {
+    width: 100%;
+    height: 40vh;
+    border: 2px dashed $primary-500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &-input{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    &-heading {
+      font-size: 1.714rem;
+      font-weight: 600;
+      color: $gray-900;
+      span {
+        color: $primary-600;
+      }
+    }
+    &-subheading {
+      font-size: 1.142rem;
+      font-weight: 500;
+      color: $gray-500;
+    }
+  }
+  &-bttn {
+    align-self: center;
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    &-heading {
+      margin-top:1rem;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    &-heading {
+      font-size: 1.4rem;
+    }
+    &-details {
+      font-size: 1rem;
+    }
+    &-drop-container {
+      margin-top: 1rem;
+      padding: 2rem;
+    }
+
+    &-dropzone {     
+      &-input{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+      &-heading {
+        font-size: 1.4rem;
+      }
+      &-subheading {
+        font-size: 1rem;
+      }
+    }
+
+  }
+}

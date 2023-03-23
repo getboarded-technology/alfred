@@ -1,13 +1,16 @@
 <template>
   <div>
-    <div
+    <b-button
+      type="submit"
+      block
+      variant="primary"
       v-if="!walletAddress"
       @click="showWallets"
-      color="#f8be17"
-      class="connect__wallet__btn font-semibold text-black"
+      color="#f2c046"
+      class="connect__wallet__btn"
     >
       Connect Wallet
-    </div>
+    </b-button>
 
     <div class="d-flex align-items-center" v-else>
       <div class="rounded-full overflow-hidden mx-1">
@@ -79,14 +82,17 @@
 </template>
 
 <script>
+import { BButton } from "bootstrap-vue";
 import metamask from "@/assets/images/wallet/Metamask.svg";
-import coinbase from "@/assets/images/wallet/Coinbase.svg";
+import intmax from "@/assets/images/wallet/intmax.svg";
+// import coinbase from "@/assets/images/wallet/Coinbase.svg";
 import walletconnect from "@/assets/images/wallet/WalletConnect.svg";
 // import unstopableDomain from "@/assets/images/wallet/unstopableDomains.svg";
 import Web3 from "web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import UAuth from "@uauth/js";
+import { IntmaxWalletSigner } from "webmax";
 // import constants from "../../../constants";
 
 export default {
@@ -101,15 +107,20 @@ export default {
           imgSrc: metamask,
         },
         {
+          type: "intmax",
+          name: "Itnmax",
+          imgSrc: intmax,
+        },
+        {
           type: "walletConnect",
           name: "WalletConnect",
           imgSrc: walletconnect,
         },
-        {
-          type: "coinbaseWallet",
-          name: "Coinbase Wallet",
-          imgSrc: coinbase,
-        },
+        // {
+        //   type: "coinbaseWallet",
+        //   name: "Coinbase Wallet",
+        //   imgSrc: coinbase,
+        // },
         // {
         //   type: "unstopableDomain",
         //   name: "Connect Unstoppable Domains",
@@ -119,6 +130,9 @@ export default {
       publicAddress: "",
       coinbase: "",
     };
+  },
+  components: {
+    BButton,
   },
   computed: {
     walletAddress() {
@@ -189,7 +203,7 @@ export default {
       this.publicAddress = account.toLowerCase();
       this.$store.commit("user/UPDATE_WALLET_INFO", this.publicAddress);
       if (this.walletAddress.slice(0, 5)) {
-        // this.$router.push("/account-type");
+        this.$router.push("/account-type");
         this.wallet = false;
       }
     },
@@ -219,13 +233,27 @@ export default {
         });
       }
       this.publicAddress = account.toLowerCase();
-      this.publicAddress = account.toLowerCase();
       this.$store.dispatch("updateWalletInfo", {
         walletAddress: this.publicAddress,
       });
       if (this.walletAddress.slice(0, 5)) {
         this.$router.push("/account-type");
         this.wallet = false;
+      }
+    },
+    async intMax() {
+      try {
+        const signer = new IntmaxWalletSigner();
+        const account = await signer.connectToAccount({
+          extraKeys: ["publicKey"],
+        });
+        this.publicAddress = account.address.toLowerCase();
+        this.$store.commit("user/UPDATE_WALLET_INFO", this.publicAddress);
+        if (this.walletAddress.slice(0, 5)) {
+          this.$router.push("/account-type");
+        }
+      } catch (error) {
+        console.error(error);
       }
     },
 
@@ -256,14 +284,18 @@ export default {
           color: "warning",
         });
       } else {
+        this.showWallets();
         if (type === "metamask") {
           return this.connectMetaMask(web3);
         } else if (type === "walletConnect") {
           this.walletConnect(web3);
         } else if (type === "coinbaseWallet") {
           this.connectCoinbase(web3);
+        } else if (type === "intmax") {
+          this.intMax(web3);
         } else {
-          this.connectunstopableDomain();
+          // this.connectunstopableDomain();
+          return;
         }
       }
     },

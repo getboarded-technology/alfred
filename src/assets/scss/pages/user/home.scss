@@ -1,0 +1,79 @@
+.home {
+  display: flex;
+  flex-direction: row;
+
+  &-section1 {
+    width: 65%;
+  }
+  &-section2 {
+    width: 35%;
+    padding-left: 3rem;
+    padding-top: 1rem;
+  }
+  &-company-cont {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1rem 0.05rem;
+    z-index: -1;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &-arrow-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    padding: 0 2rem;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    position: sticky;
+    right: 0;
+    cursor: pointer;
+    &-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &-heading-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  &-heading {
+    font-size: 1.428rem;
+    font-weight: 600;
+    color: $gray-900;
+  }
+  &-drop {
+    width: 10rem;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    &-section1 {
+      width: 100%;
+    }
+    &-section2 {
+      width: 100%;
+      padding-left: 0rem;
+    }
+  }
+}
+
+.dark-layout {
+  .home {
+    &-arrow-right {
+      background-color: $dark-bg-secondary;
+      &-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}

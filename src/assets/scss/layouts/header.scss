@@ -1,0 +1,83 @@
+@import "../variables/variables";
+.header {
+  display: flex;
+  align-items: center;
+  &-tittle {
+    font-size: 1.142rem;
+    font-weight: 600;
+    color: $gray-400;
+  }
+  &-right {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+  &-theme-icon {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-theme {
+    color: $primary;
+    fill: $primary;
+    margin: auto 0;
+  }
+  &-notification {
+    color: $gray-400;
+    fill: $gray-400;
+    margin-top: 0.5rem;
+  }
+
+  &-noti-icon {
+    margin: 0 3rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-profile {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    &-img {
+      width: 3rem;
+      height: auto;
+      border-radius: 50%;
+      margin-right: 1rem;
+      overflow: hidden;
+    }
+    &-name {
+      font-size: 1.142rem;
+      font-weight: 500;
+      color: $gray-900;
+    }
+    &-subTittle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: $gray-400;
+      margin-top: 0.3rem;
+    }
+    &-icon {
+      margin: auto 0.5rem;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    &-noti-icon {
+      margin: 0 1.5rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &-theme {
+      color: $primary;
+      fill: $primary;
+      margin: auto 0;
+      margin-left: 3rem;
+    }
+  }
+}

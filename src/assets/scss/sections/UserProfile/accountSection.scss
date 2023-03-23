@@ -1,0 +1,151 @@
+.account {
+  &-section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 3;
+    margin-left: 2rem;
+    border-radius: 1rem;
+    background-color: $white;
+    padding: 2rem;
+    padding-bottom: 3rem;
+    &-heading {
+      font-size: 1.72rem;
+      font-weight: 700;
+      color: $gray-900;
+      margin-top: 3rem;
+      text-align: center;    
+    }
+    &-subheading {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: $gray-500;
+      margin-top: 1.5rem;
+      text-align: center; 
+    }
+  }
+  &-category {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  &-detail {
+    background-color: $gray-100;
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: 0.7rem;
+    position: relative;
+    overflow: hidden;
+    &-indicator {
+      width: 0.5rem;
+      height: 100%;
+      // border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: $gray-300;
+    }
+    &-text {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: $gray-500;
+    }
+  }
+  &-button {
+    margin-top: 4rem;
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: flex-end;
+    &-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $gray-900;
+    }
+  }
+
+  @media screen and (max-width: 1344px) {
+    padding: 2rem;
+    &-heading {
+      font-size: 2rem;
+    }
+    &-subheading {
+      font-size: 1.3rem;
+    }
+    &-card-container {
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 2rem;
+    }
+    &-category {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding: 0 0rem;
+
+    &-section2 {
+      margin-left: 0;
+      width: 100%;
+      flex: 1;
+      justify-content: flex-start;
+      margin-top: 0;
+      padding-top: 0;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &-heading {
+      display: none;
+      font-size: 1.8rem;
+      margin-top: 3rem;
+      margin-bottom: 0rem;
+      &-br1 {
+        display: none;
+      }
+    }
+    &-subheading {
+      display: none;
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      &-br1 {
+        display: none;
+      }
+      &-br2 {
+        display: block;
+      }
+    }
+    &-card-container {
+      display: none;
+    }
+    &-detail {
+      display: none;
+    }
+  }
+}
+
+.dark-layout {
+  .account {
+    &-section2 {
+      background-color: $dark-bg-secondary;
+    }
+    &-detail {
+      background-color: $dark-bg-tertiary;
+      &-indicator {
+        background-color: $dark-bg;
+      }
+    }
+  }
+}

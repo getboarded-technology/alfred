@@ -22,6 +22,13 @@
     </div>
 
     <b-navbar-nav class="nav align-items-center ml-auto">
+      <button
+        class="btn btn-warning"
+        type="button"
+        block
+        @click="connectToMetamask"
+      >{{ address? address.slice(0, 6) + '...' + address.slice(-4): 'Connect To Metamask' }}
+      </button>
       <b-nav-item-dropdown
         right
         toggle-class="d-flex align-items-center dropdown-user-link"
@@ -100,6 +107,8 @@ import {
   BLink, BNavbarNav, BNavItemDropdown, BDropdownItem, BDropdownDivider, BAvatar,
 } from 'bootstrap-vue'
 import DarkToggler from '@core/layouts/components/app-navbar/components/DarkToggler.vue'
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import { ethers } from 'ethers'
 
 export default {
   components: {
@@ -117,6 +126,43 @@ export default {
     toggleVerticalMenuActive: {
       type: Function,
       default: () => {},
+    },
+  },
+  data() {
+    return {
+      address: null,
+    }
+  },
+  methods: {
+    async connectToMetamask() {
+      console.log(this.$data.userEmail, this.$data.password)
+      if (window.ethereum) {
+        try {
+          const provider = new ethers.providers.Web3Provider(window.ethereum)
+          await provider.send('eth_requestAccounts', [])
+          const signer = await provider.getSigner()
+          this.$data.address = await signer.getAddress()
+          this.$toast({
+            component: ToastificationContent,
+            props: {
+              title: `Logged in witn address ${this.$data.address.slice(0, 6)}...${this.$data.address.slice(-4)}`,
+              icon: 'EditIcon',
+              variant: 'success',
+            },
+          })
+        } catch (error) {
+          this.$toast({
+            component: ToastificationContent,
+            props: {
+              title: `Error while connecting to Web3: ${error.message ? error.message : error}`,
+              icon: 'EditIcon',
+              variant: 'danger',
+            },
+          })
+        }
+      } else {
+        console.log('Please install metamask extension.')
+      }
     },
   },
 }

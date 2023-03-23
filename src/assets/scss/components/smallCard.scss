@@ -1,0 +1,23 @@
+.small-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center !important;
+  justify-content: start;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: $gray-50;
+  &-heading {
+    font-size: 1.142rem;
+    font-weight: 500;
+    color: $gray-400;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+  }
+}
+
+.dark-layout {
+  .small-card {
+    background-color: $dark-bg-tertiary;
+  }
+}
