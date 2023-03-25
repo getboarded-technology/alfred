@@ -1,21 +1,22 @@
 <template>
-  <div :class="`${currentTheme}-theme`">
+  <div :class="`light-theme`">
     <!-- Org heading  -->
     <b-row class="padding--x org-bg" :style="orgBg">
       <b-col class="d-flex align-items-center">
         <b-row class="py-2">
           <b-col sm="6" md="8">
-            <h3 class="org-heading heading">Gala Academy</h3>
+            <h3 class="org-heading heading">ETH Global</h3>
             <p class="org-subheading subheading">
-              Somos una consultora data-driven que potencia la inteligencia
-              artificial gracias al factor humano.
+              Hackathons teach new skills, strengthen developer communities, and
+              push the limits of new technologies. At ETHGlobal, we're
+              leveraging our years of experience to foster a world-class
+              ecosystem of Ethereum developers and entrepreneurs.
             </p>
           </b-col>
         </b-row>
       </b-col>
     </b-row>
-    <div class="my-3 mt-md-8 mb-md-1 padding--x">
-      <!-- Selections -->
+    <!-- <div class="my-3 mt-md-8 mb-md-1 padding--x">
       <b-row class="justify-content-between">
         <b-col md="3" xl="2">
           <div
@@ -69,17 +70,17 @@
           </b-row>
         </b-col>
       </b-row>
-    </div>
+    </div> -->
     <!-- Org courses  -->
     <b-row class="padding--x-uni">
       <b-col
-        v-for="i in 10"
+        v-for="(item, i) in libraryItems"
         :key="i"
         md="6"
         lg="4"
         class="px-md-2 mb-2 my-md-2"
       >
-        <courses /> </b-col
+        <courses :item="item.data" class="h-100" /> </b-col
     ></b-row>
 
     <!-- suggestions  -->
@@ -112,24 +113,24 @@
         >
       </b-col>
     </b-row>
+
+    <distribute-item v-if="distributeItemPopup" />
   </div>
 </template>
 
 <script>
-import { BRow, BCol, BFormGroup, BFormCheckbox } from "bootstrap-vue";
-import vSelect from "vue-select";
+import { BRow, BCol } from "bootstrap-vue";
 import Courses from "@/components/Courses.vue";
 import designMixin from "@/mixins/designMixin.js";
+import DistributeItem from "@/modals/DistributeItem.vue";
 export default {
   name: "Library",
   mixins: [designMixin],
   components: {
     BCol,
     BRow,
-    BFormGroup,
-    vSelect,
-    BFormCheckbox,
     Courses,
+    DistributeItem,
   },
   data() {
     return {
@@ -141,7 +142,8 @@ export default {
       ],
       selected: "",
       selectCourse: false,
-      currentTheme: "dark",
+      currentTheme: "light",
+      libraryItems: [],
     };
   },
   computed: {
@@ -157,6 +159,25 @@ export default {
         background: `${this.themeColor}1a`,
       };
     },
+    distributeItemPopup() {
+      return this.$store.state.modals.distributeItemPopup;
+    },
+  },
+  methods: {
+    getLibraryItems() {
+      this.$store
+        .dispatch("library/getLibraryItems")
+        .then((res) => {
+          this.libraryItems = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
+    },
+  },
+  mounted() {
+    this.getLibraryItems();
   },
 };
 </script>

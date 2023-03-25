@@ -6,7 +6,7 @@
       ><a href="/">
         <img
           class="company-logo"
-          :src="require(`@/assets/images/logo/getboarded-${currentTheme}.svg`)"
+          :src="require(`@/assets/images/logo/alfred.svg`)"
           alt="Getboarded"
         /> </a
     ></b-col>

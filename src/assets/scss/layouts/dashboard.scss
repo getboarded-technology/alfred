@@ -4,14 +4,19 @@
   grid-template-columns: 8rem 1fr;
   grid-template-rows: min-content 1fr;
   grid-template-areas:
-    'sideNav header'
-    'sideNav main'
-    'sideNav main';
-  height: 100vh;
-  padding: 2rem;
+    "sideNav header"
+    "sideNav main"
+    "sideNav main";
+  height: auto;
+  padding: 1rem;
+  padding-top: 2.75em;
   &-header {
     grid-area: header;
-    padding: 1rem;
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #f8f8f8;
   }
 
   &-sidenav {
@@ -28,9 +33,9 @@
     padding: 0rem;
     grid-template-columns: 6rem 1fr;
     grid-template-areas:
-      'sideNav header'
-      'main main'
-      'main main';
+      "sideNav header"
+      "main main"
+      "main main";
     &-main {
       padding: 0rem;
       margin-top: 0.5rem;

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import DashBoard from '@/layouts/DashBoard.vue'
+import DashBoard from "@/layouts/DashBoard.vue";
+import store from "@/store/index";
 // import SecondaryDashboard from '@/layouts/SecondaryDashboard.vue'
 
 Vue.use(VueRouter);
@@ -13,11 +14,12 @@ const router = new VueRouter({
   },
   routes: [
     {
-      path: '/',
-      name: 'dashboard',
-      component: () => import('@/views/Userflow/Home.vue'),
+      path: "/",
+      name: "dashboard",
+      component: () => import("@/views/Userflow/Home.vue"),
       meta: {
         layout: DashBoard,
+        authenticationRequired: true,
       },
     },
     // {
@@ -34,6 +36,8 @@ const router = new VueRouter({
       component: () => import("@/views/Home.vue"),
       meta: {
         layout: "full",
+        title: "Library",
+        authenticationRequired: true,
       },
     },
     {
@@ -50,6 +54,7 @@ const router = new VueRouter({
       component: () => import("@/views/pages/AccountType.vue"),
       meta: {
         layout: "full",
+        authenticationRequired: true,
       },
     },
     {
@@ -87,6 +92,22 @@ const router = new VueRouter({
       redirect: "error-404",
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  // Set Page Title
+  const DEFAULT_TITLE = "ALFRED";
+  Vue.nextTick(() => {
+    document.title = to.meta.title || DEFAULT_TITLE;
+  });
+
+  // // console.log(store.state.auth);
+  const isAuthenticated = store.state.user.isUserLoggedIn;
+  if (to.meta.authenticationRequired && !isAuthenticated) {
+    router.push("/login");
+  } else {
+    return next();
+  }
 });
 
 // ? For splash screen

@@ -36,15 +36,20 @@
     <b-card class="content__detail p-2 position-relative m-0">
       <ConnectWalletButton class="wallet__btn" />
       <resume-parser v-if="pageName === 'parse-resume'" />
-      <user-details v-if="pageName === 'user-details'" />
+      <user-details
+        @claimProfile="claimProfile"
+        v-if="pageName === 'user-details'"
+      />
 
       <b-button
+        v-if="pageName === 'user-details'"
         type="submit"
         block
         variant="primary"
-        @click="showWallets"
+        @click="submitUserProfile"
         color="#f2c046"
         class="claim-profile"
+        :class="claimProfileEvent ? '' : 'block-btn'"
       >
         Claim Profile
       </b-button>
@@ -89,6 +94,7 @@ export default {
       ],
       theme: "light",
       pageName: "",
+      claimProfileEvent: false,
     };
   },
   watch: {
@@ -100,8 +106,34 @@ export default {
       immediate: true,
     },
   },
+  computed: {
+    userData() {
+      return this.$store.state.user.user;
+    },
+  },
   mounted() {
     this.pageName = this.$route.name;
+  },
+  methods: {
+    claimProfile(val) {
+      this.claimProfileEvent = val;
+    },
+    submitUserProfile() {
+      const payload = {
+        id: this.userData._id,
+        updatedDetails: this.userData,
+      };
+      this.$store
+        .dispatch("user/editUserData", payload)
+        .then((res) => {
+          console.log(res);
+          this.$router.push("/");
+        })
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
+    },
   },
 };
 </script>
@@ -136,7 +168,10 @@ export default {
   margin: 0;
   padding: 0;
 }
-
+.block-btn {
+  pointer-events: none;
+  opacity: 0.7;
+}
 .card ::v-deep .card-body {
   width: 100%;
 }

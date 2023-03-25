@@ -135,8 +135,11 @@ export default {
     BButton,
   },
   computed: {
+    userData() {
+      return this.$store.state.user.user;
+    },
     walletAddress() {
-      return this.$store.state.user.walletAddress;
+      return this.$store.state.user.user.walletAddress;
     },
     avatarNameGenerator() {
       return this.$store.state.user.avatarNameGenerator;
@@ -202,10 +205,10 @@ export default {
       // }
       this.publicAddress = account.toLowerCase();
       this.$store.commit("user/UPDATE_WALLET_INFO", this.publicAddress);
-      if (this.walletAddress.slice(0, 5)) {
-        this.$router.push("/account-type");
-        this.wallet = false;
-      }
+      // if (this.walletAddress.slice(0, 5)) {
+      //   this.$router.push("/account-type");
+      //   this.wallet = false;
+      // }
     },
     async walletConnect(web3) {
       const provider = new WalletConnectProvider({
@@ -236,10 +239,10 @@ export default {
       this.$store.dispatch("updateWalletInfo", {
         walletAddress: this.publicAddress,
       });
-      if (this.walletAddress.slice(0, 5)) {
-        this.$router.push("/account-type");
-        this.wallet = false;
-      }
+      // if (this.walletAddress.slice(0, 5)) {
+      //   this.$router.push("/account-type");
+      //   this.wallet = false;
+      // }
     },
     async intMax() {
       try {
@@ -249,9 +252,17 @@ export default {
         });
         this.publicAddress = account.address.toLowerCase();
         this.$store.commit("user/UPDATE_WALLET_INFO", this.publicAddress);
-        if (this.walletAddress.slice(0, 5)) {
-          this.$router.push("/account-type");
-        }
+        const payload = {
+          walletAddress: this.publicAddress,
+        };
+        this.$store
+          .dispatch("user/saveUserDetails", payload)
+          .then((res) => {
+            this.move(res.data.user.walletAddress);
+          })
+          .catch(() => {
+            return;
+          });
       } catch (error) {
         console.error(error);
       }
@@ -297,6 +308,11 @@ export default {
           // this.connectunstopableDomain();
           return;
         }
+      }
+    },
+    move(address) {
+      if (address && address.slice(0, 5)) {
+        this.$router.push("/account-type").catch(() => {});
       }
     },
   },

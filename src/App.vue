@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="h-100" :class="[skinClasses]">
-    <component :is="layout">
+    <component :is="this.$route.meta.layout || 'div'">
       <router-view />
     </component>
   </div>
@@ -78,12 +78,29 @@ export default {
     const { isRTL } = $themeConfig.layout;
     document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
   },
-  created() {
-    let theme = localStorage.getItem("theme");
-    if (theme.toString() === "null" || theme.toString() === "undefined") {
-      this.$store.commit("user/TOOGLE_THEME", "dark");
+  mounted() {
+    let accessToken = localStorage.getItem("accessToken");
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    if (
+      accessToken.toString() === "null" ||
+      accessToken.toString() === "undefined"
+    ) {
+      return;
     }
-    if (theme === "dark") document.body.classList.add("dark-layout");
+    this.$store.commit("user/SET_BEARER_TOKEN", accessToken);
+
+    if (user.toString() === "null" || user.toString() === "undefined") {
+      return;
+    } else {
+      this.$store
+        .dispatch("user/getUserData", user._id)
+        .then(() => {})
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
+    }
   },
   setup() {
     const { skin, skinClasses } = useAppConfig();

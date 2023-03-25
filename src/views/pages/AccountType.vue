@@ -94,11 +94,27 @@ export default {
       ],
     };
   },
-
+  computed: {
+    userData() {
+      return this.$store.state.user.user;
+    },
+  },
   methods: {
     setFlow(data) {
-      this.$store.dispatch("setAccountType", data.type);
+      const payload = {
+        id: this.userData._id,
+        updatedDetails: { accountType: data.type },
+      };
       this.$router.push(data.routeTo);
+      this.$store
+        .dispatch("user/editUserData", payload)
+        .then((res) => {
+          console.log(res);
+          this.$router.push(data.routeTo);
+        })
+        .catch(() => {
+          return;
+        });
     },
   },
 };

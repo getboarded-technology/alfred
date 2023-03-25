@@ -11,7 +11,7 @@
         </b-row>
         <b-row class="flex-column mt-1 pr-1">
           <div class="subheading">Email</div>
-          <input type="text" value="email" v-model="userData.email" />
+          <input type="email" value="email" v-model="userData.email" />
         </b-row> </b-col
       ><b-col></b-col>
     </b-row>
@@ -41,11 +41,11 @@
       <b-col md="6" class="">
         <b-row class="flex-column mt-1 pr-1 h-100">
           <div class="subheading">Career Objective</div>
-          <input
+          <textarea
             type="text"
             class="h-75"
             value="career-objective"
-            v-model="userData.CareerObjective"
+            v-model="userData.careerObjective"
           />
         </b-row>
       </b-col>
@@ -73,10 +73,10 @@
       <b-col md="6" class="">
         <b-row class="flex-column mt-1 pr-1">
           <div class="subheading">About</div>
-          <input
+          <textarea
             type="text"
             class="about"
-            value="last-name"
+            value="about"
             v-model="userData.about"
           />
         </b-row>
@@ -87,6 +87,8 @@
 
 <script>
 import { BRow, BCol, BFormGroup, BFormRadioGroup } from "bootstrap-vue";
+// import moment from "moment";
+
 export default {
   name: "UserDetails",
   data() {
@@ -98,7 +100,6 @@ export default {
         { text: "Others", value: "others" },
         { text: "Prefer not to say", value: "third" },
       ],
-      userData: {},
       maxDate: "",
     };
   },
@@ -108,12 +109,47 @@ export default {
     BFormGroup,
     BFormRadioGroup,
   },
+  computed: {
+    userData() {
+      return this.$store.state.user.user;
+    },
+  },
   watch: {
     userData: {
       handler(newVal) {
-        console.log(newVal);
+        let {
+          email,
+          dob,
+          firstName,
+          lastName,
+          careerObjective,
+          about,
+          gender,
+        } = newVal;
+        if (
+          !(
+            email &&
+            dob &&
+            firstName &&
+            lastName &&
+            careerObjective &&
+            about &&
+            gender
+          )
+        ) {
+          return;
+        }
+
+        if (newVal.dob) {
+          let dob = newVal.dob.includes("T")
+            ? newVal.dob.split("T")[0]
+            : newVal.dob;
+          this.userData.dob = dob;
+        }
+        this.$emit("claimProfile", true);
       },
       deep: true,
+      immediate: true,
     },
   },
   methods: {
@@ -159,8 +195,8 @@ export default {
   font-size: 1.25rem;
 }
 
-textarea,
-input {
+input,
+textarea {
   border: none;
   background: #ece9e9;
   padding: 0.5em 0.75em;

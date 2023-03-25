@@ -292,7 +292,7 @@ export default {
       return this.$store.state.resumeParser.resume;
     },
     userData() {
-      return this.$store.state.user.userData;
+      return this.$store.state.user.user;
     },
   },
   mounted() {
@@ -365,6 +365,7 @@ export default {
             res.forEach((item) => {
               this.finalResponse = { ...this.finalResponse, ...item };
             });
+
             this.jsonResponse = this.finalResponse;
             this.isScanningCard = false;
             this.jsonResponsePopup = true;
@@ -379,6 +380,19 @@ export default {
     selectFieldToSync() {
       this.jsonResponsePopup = false;
       this.isSelectFieldCard = true;
+      const payload = {
+        id: this.userData._id,
+        updatedDetails: this.finalResponse,
+      };
+      this.$store
+        .dispatch("user/editUserData", payload)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
     },
     syncSelectedFieldData() {
       let myObj = {};
@@ -543,7 +557,7 @@ export default {
     }
   }
 
-  .card ::v-deep .card-body{
+  .card ::v-deep .card-body {
     width: 100%;
   }
 

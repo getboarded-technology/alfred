@@ -9,7 +9,7 @@
         @click="toggleSideBar"
       >
         <img
-          src="@/assets/images/logo/Getboarded_Logo_2.png"
+          src="@/assets/images/logo/alfred.svg"
           alt="Getboarded Logo"
           style="width: 100%; height: 100%; object-fit: contain"
         >
@@ -45,7 +45,7 @@
         <div class="sideDrawer-topContainer">
           <div class="sideDrawer-logo">
             <img
-              src="@/assets/images/logo/Getboarded_Logo.png"
+              src="@/assets/images/logo/alfred.svg"
               alt="Getboarded Logo"
               style="width: 100%; height: 100%; object-fit: contain"
             >
@@ -174,4 +174,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/layouts/sideBar.scss';
+.sidebar{
+  height: 90vh;
+}
 </style>
