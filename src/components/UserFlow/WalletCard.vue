@@ -39,7 +39,6 @@ export default {
       web3Provider: "",
       signer: "",
       contractAddress: "0x725C11F3bf31b0fB5Cb882c7315c5AF42D785328",
-    
     };
   },
   computed: {

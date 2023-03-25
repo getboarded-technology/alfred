@@ -84,10 +84,10 @@ export default {
   watch: {
     userData: {
       handler(newVal) {
-        if (newVal) {
+        if (newVal && newVal.skills && newVal.skills.length > 0) {
           this.userRecommendations();
-          this.assignedItem();
         }
+        newVal ? this.assignedItem() : "";
       },
       immediate: true,
       deep: true,
