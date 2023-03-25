@@ -52,10 +52,10 @@
                     />
                     <div class="option__desc">
                       <span class="option__title">{{
-                        props.option.department
+                        props.option.firstName
                       }}</span
                       ><span class="option__small">{{
-                        props.option.roleTitle
+                        props.option.lastName
                       }}</span>
                     </div>
                   </b-row>
@@ -147,12 +147,12 @@ export default {
               variant: "success",
             },
           });
-          this.$store.commit('modals/OPEN_DISTRIBUTE_LIBRARY_POPUP', false)
+          this.$store.commit("modals/OPEN_DISTRIBUTE_LIBRARY_POPUP", false);
         });
       }
     },
-    customLabel({ department, roleTitle }) {
-      return `${department} – ${roleTitle}`;
+    customLabel({ firstName, lastName }) {
+      return `${firstName} – ${lastName}`;
     },
     getOrgUsers() {
       this.$store.dispatch("user/getOrgData").then((res) => {
