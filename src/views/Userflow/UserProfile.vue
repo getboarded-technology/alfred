@@ -126,8 +126,7 @@ export default {
       this.$store
         .dispatch("user/editUserData", payload)
         .then((res) => {
-          console.log(res);
-          this.$router.push("/");
+          res ? this.$router.push("/") : "";
         })
         .catch((err) => {
           console.log(err);

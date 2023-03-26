@@ -24,8 +24,8 @@
               <multiselect
                 v-model="selectedUsers"
                 placeholder="Select User"
-                label="userId"
-                track-by="userId"
+                label="_id"
+                track-by="_id"
                 :options="options"
                 :multiple="true"
                 :option-height="10"
@@ -46,7 +46,7 @@
                 <template slot="option" slot-scope="props"
                   ><b-row class="align-items-center"
                     ><img
-                      class="option__image"
+                      class="option__image mr-50"
                       :src="`https://source.boringavatars.com/beam/100/${avatarNameGenerator()}`"
                       alt=""
                     />
@@ -54,7 +54,7 @@
                       <span class="option__title">{{
                         props.option.firstName
                       }}</span
-                      ><span class="option__small">{{
+                      ><span class="option__small mx-50">{{
                         props.option.lastName
                       }}</span>
                     </div>
@@ -152,11 +152,12 @@ export default {
       }
     },
     customLabel({ firstName, lastName }) {
-      return `${firstName} – ${lastName}`;
+      return `${firstName} ${lastName}`;
     },
     getOrgUsers() {
       this.$store.dispatch("user/getOrgData").then((res) => {
-        this.options = res.data.users;
+        console.log(res.data);
+        this.options = res.data.user;
       });
     },
   },

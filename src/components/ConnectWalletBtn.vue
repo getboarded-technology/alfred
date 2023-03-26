@@ -192,23 +192,8 @@ export default {
         method: "eth_requestAccounts",
       });
       const account = accounts[0];
-      // console.log(account);
-      // const coinbase = await web3.eth.getCoinbase();
-      // if (!coinbase) {
-      //   this.$vs.notify({
-      //     title: this.$t("Login.notify.title"),
-      //     text: this.$t("Metamasklogin.activate"),
-      //     iconPack: "feather",
-      //     icon: "icon-alert-circle",
-      //     color: "warning",
-      //   });
-      // }
-      this.publicAddress = account.toLowerCase();
-      this.$store.commit("user/UPDATE_WALLET_INFO", this.publicAddress);
-      // if (this.walletAddress.slice(0, 5)) {
-      //   this.$router.push("/account-type");
-      //   this.wallet = false;
-      // }
+      this.move(account);
+      this.$store.commit("user/UPDATE_WALLET_INFO", account);
     },
     async walletConnect(web3) {
       const provider = new WalletConnectProvider({
@@ -271,7 +256,7 @@ export default {
     async connectunstopableDomain() {
       const uauth = new UAuth({
         clientID: "332bb91f-49d2-4dae-ae6a-896a38905409",
-        redirectUri: "https://banked.getboarded.com",
+        redirectUri: "",
       });
 
       uauth
@@ -312,7 +297,9 @@ export default {
     },
     move(address) {
       if (address && address.slice(0, 5)) {
-        this.$router.push("/account-type").catch(() => {});
+        this.$store.commit("user/SET_USER_LOGGED", true);
+        const path = `/account-type`;
+        if (this.$route.path !== path) this.$router.push(path);
       }
     },
   },

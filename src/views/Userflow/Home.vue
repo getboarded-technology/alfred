@@ -27,14 +27,22 @@
       <div v-if="isSkeletonVisible">
         <div v-for="index in 5" :key="index" class="skeleton" />
       </div>
-
-      <TaskCard
-        v-else
-        v-for="(feed, index) in feedData"
-        :key="index"
-        :feed="feed"
-      />
+      <div v-else>
+        <OrgItemCard
+          v-show="orgAssignedItems && orgAssignedItems.length > 0"
+          v-for="(item, i) in orgAssignedItems"
+          :key="i"
+          :feed="item"
+        />
+        <TaskCard
+          v-show="feedItems && feedItems.length > 0"
+          v-for="(feed, index) in feedData"
+          :key="index"
+          :feed="feed"
+        />
+      </div>
     </div>
+
     <div class="home-section2">
       <AddSkillCard />
       <WalletCard />
@@ -49,11 +57,13 @@ import AddSkillCard from "@/components/UserFlow/AddSkillCard.vue";
 import WalletCard from "@/components/UserFlow/WalletCard.vue";
 import ProfileEdit from "@/modals/ProfileEdit.vue";
 import { BFormSelect } from "bootstrap-vue";
+import OrgItemCard from "@/components/UserFlow/OrgItemCard.vue";
 
 export default {
   components: {
     SmallCard,
     TaskCard,
+    OrgItemCard,
     BFormSelect,
     AddSkillCard,
     WalletCard,
@@ -74,6 +84,7 @@ export default {
       doneItemsData: [],
       doingItemsData: [],
       isSkeletonVisible: true,
+      orgAssignedItems: [],
     };
   },
   computed: {
@@ -193,7 +204,7 @@ export default {
             userId: this.userData._id,
           })
           .then((res) => {
-            console.log(res);
+            this.orgAssignedItems = res.data;
           })
           .catch(() => {
             this.mixedFeedData = [];

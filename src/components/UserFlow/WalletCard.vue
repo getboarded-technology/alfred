@@ -38,7 +38,7 @@ export default {
     return {
       web3Provider: "",
       signer: "",
-      contractAddress: "0x725C11F3bf31b0fB5Cb882c7315c5AF42D785328",
+      contractAddress: "0x2ff26C2A2fCf7ead5a1b8133303a33367b3B7F59",
     };
   },
   computed: {

@@ -10,7 +10,7 @@
       </div>
       <div class="add-skill-profile-detail">
         <h1 class="add-skill-profile-name">
-          {{ userData.firstName }}{{ userData.lastName }}
+          {{ userData.firstName }} {{ userData.lastName }}
         </h1>
         <h1 class="add-skill-profile-email">{{ userData.email }}</h1>
       </div>

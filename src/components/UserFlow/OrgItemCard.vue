@@ -13,10 +13,14 @@
           style="width: 100%; height: 100%; object-fit: cover"
         />
       </div>
-      <h2 class="task-card-top-section-heading" v-if="feed.xp">Assigned By ETHGlobal</h2>
-      <h2 class="task-card-top-section-heading" v-else>{{ feed.source }}</h2>
+      <h2 class="task-card-top-section-heading" v-if="feed.xp">
+        Assigned By ETHGlobal
+      </h2>
+      <h2 class="task-card-top-section-heading" v-else>
+        {{ feed.task.source }}
+      </h2>
       <h2 class="task-card-top-section-daily" ref="xp" v-if="feed.xp">
-        {{ feed.xp }}
+        {{ feed.xp }} XP's
       </h2>
       <h2 class="task-card-top-section-daily" ref="xp" v-else>15 XP's</h2>
       <!-- <h2 class="task-card-top-section-date">4 days ago</h2> -->
@@ -25,17 +29,17 @@
     <div class="task-card-display-picture">
       <img
         @error="randomFeedImage"
-        :src="feed.imageUrl"
+        :src="feed.task.imageUrl"
         style="width: 100%; height: 100%; object-fit: cover"
         alt="task1"
       />
     </div>
     <div class="task-card-content">
       <h3 class="task-card-content-heading">
-        {{ feed.title }}
+        {{ feed.task.title }}
       </h3>
       <h4 class="task-card-content-description">
-        {{ feed.description }}
+        {{ feed.task.description }}
       </h4>
     </div>
     <div class="task-card-activity">
@@ -66,11 +70,15 @@
         </div>
       </div>
     </div>
+
+    <!-- chatbot modal  -->
+    <chatbot-modal v-if="chatBotPopup" class="position-absolute" validateFormId="UzMUt1QQ"/>
   </div>
 </template>
 
 <script>
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
+import ChatbotModal from "@/modals/ChatbotModal.vue";
 // this.$toast({
 //   component: ToastificationContent,
 //   props: {
@@ -86,9 +94,15 @@ export default {
       taskStatus: "do",
     };
   },
+  components: {
+    ChatbotModal,
+  },
   computed: {
     userData() {
       return this.$store.state.user.user;
+    },
+    chatBotPopup() {
+      return this.$store.state.modals.chatBotPopup;
     },
   },
   props: {
@@ -142,18 +156,18 @@ export default {
               });
             }
             if (this.taskStatus === "done") {
-              const payload = {
-                id: this.userData._id,
-                updatedDetails: { xp: this.userData.xp + 15 },
-              };
-              this.$store
-                .dispatch("user/editUserData", payload)
-                .then((res) => {
-                  console.log(res);
-                })
-                .catch(() => {
-                  return;
-                });
+              //   const payload = {
+              //     id: this.userData._id,
+              //     updatedDetails: { xp: this.userData.xp + 15 },
+              //   };
+              //   this.$store
+              //     .dispatch("user/editUserData", payload)
+              //     .then((res) => {
+              //       console.log(res);
+              //     })
+              //     .catch(() => {
+              //       return;
+              //     });
 
               this.$toast({
                 component: ToastificationContent,
@@ -164,6 +178,8 @@ export default {
                   variant: "success",
                 },
               });
+
+              this.$store.commit("modals/OPEN_CHAT_BOT_POPUP", true);
             }
             // this.queries = !this.queries;
             this.$emit("recommendation", feed.itemId, true);

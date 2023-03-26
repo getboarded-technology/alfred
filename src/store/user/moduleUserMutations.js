@@ -21,4 +21,7 @@ export default {
   EDIT_USER_DETAILS(state, value) {
     state.user = { ...state.user, ...value };
   },
+  SET_USER_LOGGED(state, value) {
+    state.isUserLoggedIn = value;
+  },
 };

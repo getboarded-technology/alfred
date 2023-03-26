@@ -39,6 +39,11 @@ export default {
       formId: "J9poDQqx",
     };
   },
+  props: {
+    validateFormId: {
+      type: String,
+    },
+  },
   computed: {
     currentTheme() {
       return this.$store.state.user.themeType;
@@ -48,6 +53,15 @@ export default {
     },
     chatBotPopup() {
       return this.$store.state.modals.chatBotPopup;
+    },
+  },
+  watch: {
+    validateFormId: {
+      handler(newVal) {
+        console.log(newVal);
+      },
+      deep: true,
+      immediate: true,
     },
   },
   mounted() {

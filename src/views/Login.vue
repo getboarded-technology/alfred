@@ -21,7 +21,7 @@
         <hr />
 
         <b-form class="login-form" @submit.prevent>
-          <validation-observer ref="loginValidation">
+          <!-- <validation-observer ref="loginValidation">
             <b-form-group label="Email" label-for="login-email">
               <validation-provider
                 #default="{ errors }"
@@ -38,9 +38,9 @@
                 <small class="text-danger">{{ errors[0] }}</small>
               </validation-provider>
             </b-form-group>
-          </validation-observer>
+          </validation-observer> -->
           <b-form-group>
-            <b-button
+            <!-- <b-button
               type="submit"
               block
               variant="primary"
@@ -48,8 +48,8 @@
               @click="validationForm"
             >
               Get OTP
-            </b-button>
-            <h5 class="text-center m-2">OR</h5>
+            </b-button> -->
+            <!-- <h5 class="text-center m-2">OR</h5> -->
             <!-- <b-button
               type="submit"
               variant="outline-dark"
@@ -203,7 +203,7 @@
 
 <script>
 /* eslint-disable global-require */
-import { ValidationProvider, ValidationObserver } from "vee-validate";
+import { ValidationProvider } from "vee-validate";
 
 import { BLink, BFormGroup, BFormInput, BForm, BButton } from "bootstrap-vue";
 import { required, email } from "@validations";
@@ -226,7 +226,7 @@ export default {
     BForm,
     BButton,
     ValidationProvider,
-    ValidationObserver,
+    // ValidationObserver,
     Card,
     SmallCard,
     ConnectWalletBtn,
