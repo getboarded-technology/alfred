@@ -18,7 +18,7 @@
     </b-row>
     <div class="my-3 mt-md-8 mb-md-1 padding--x">
       <b-row class="justify-content-between">
-        <b-col md="3" xl="2" class="d-flex align-items-center">
+        <b-col md="3" xl="3" class="d-flex align-items-center">
           <feather-icon
             icon="PlusCircleIcon"
             class="add-skill-profile-arrow-icon add-skill-profile-plus-icon icon"
