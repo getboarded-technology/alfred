@@ -18,7 +18,12 @@
     </b-row>
     <div class="my-3 mt-md-8 mb-md-1 padding--x">
       <b-row class="justify-content-between">
-        <b-col md="3" xl="2">
+        <b-col md="3" xl="2" class="d-flex align-items-center">
+          <feather-icon
+            icon="PlusCircleIcon"
+            class="add-skill-profile-arrow-icon add-skill-profile-plus-icon icon"
+          />
+          <div class="ml-50 text">2000 XP remaining</div>
           <!-- <div
             class="cursor-pointer custom-btn d-flex align-items-center custom-border-btn mb-1 mb-md-0"
           >
@@ -223,6 +228,13 @@ export default {
   }
 }
 
+.icon{
+  width: 2.5em;
+}
+.text{
+  font-size: 1.5em;
+  color:#000
+}
 .padding--x-uni {
   padding-right: 3em;
   padding-left: 4em;
