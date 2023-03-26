@@ -8,8 +8,8 @@
               class="account__type__container__logo md:w-4/5"
               :src="
                 theme === 'dark'
-                  ? require('@/assets/images/dark/logo/Getboarded_Logo.png')
-                  : require('@/assets/images/light/logo/Getboarded_Logo.png')
+                  ? require('@/assets/images/logo/alfred.png')
+                  : require('@/assets/images/logo/alfred.png')
               "
               alt="Banked"
             />

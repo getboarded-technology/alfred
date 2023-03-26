@@ -4,6 +4,7 @@ import axios from "@/libs/axios";
 export default {
   UPDATE_WALLET_INFO(state, value) {
     state.walletAddress = value;
+    state.user.walletAddress = value;
   },
   SET_USER_DETAILS(state, value) {
     state.user = value.user;
