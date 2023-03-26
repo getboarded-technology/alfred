@@ -116,41 +116,41 @@ export default {
           icon: 'category',
           path: '/',
         },
-        {
-          name: 'Board',
-          icon: 'rocket',
-          path: '/board',
-        },
-        {
-          name: 'Mace',
-          icon: 'mace',
-          path: '/mace',
-        },
-        {
-          name: 'Heart',
-          icon: 'heart',
-          path: '/heart',
-        },
-        {
-          name: 'Chat',
-          icon: 'chat',
-          path: '/chat',
-        },
-        {
-          name: 'Bank',
-          icon: 'bank',
-          path: '/bank',
-        },
+        // {
+        //   name: 'Board',
+        //   icon: 'rocket',
+        //   path: '/board',
+        // },
+        // {
+        //   name: 'Mace',
+        //   icon: 'mace',
+        //   path: '/mace',
+        // },
+        // {
+        //   name: 'Heart',
+        //   icon: 'heart',
+        //   path: '/heart',
+        // },
+        // {
+        //   name: 'Chat',
+        //   icon: 'chat',
+        //   path: '/chat',
+        // },
+        // {
+        //   name: 'Bank',
+        //   icon: 'bank',
+        //   path: '/bank',
+        // },
         {
           name: 'Settings',
           icon: 'settings',
           path: '/settings',
         },
-        {
-          name: 'Briefcase',
-          icon: 'briefcase',
-          path: '/briefcase',
-        },
+        // {
+        //   name: 'Briefcase',
+        //   icon: 'briefcase',
+        //   path: '/briefcase',
+        // },
       ],
     }
   },

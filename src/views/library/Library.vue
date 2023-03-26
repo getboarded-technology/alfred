@@ -3,7 +3,7 @@
     <!-- Org heading  -->
     <b-row class="padding--x org-bg" :style="orgBg">
       <b-col class="d-flex align-items-center">
-        <b-row class="py-2">
+        <!-- <b-row class="py-2">
           <b-col sm="6" md="8">
             <h3 class="org-heading heading">ETH Global</h3>
             <p class="org-subheading subheading">
@@ -13,21 +13,21 @@
               ecosystem of Ethereum developers and entrepreneurs.
             </p>
           </b-col>
-        </b-row>
+        </b-row> -->
       </b-col>
     </b-row>
-    <!-- <div class="my-3 mt-md-8 mb-md-1 padding--x">
+    <div class="my-3 mt-md-8 mb-md-1 padding--x">
       <b-row class="justify-content-between">
         <b-col md="3" xl="2">
-          <div
+          <!-- <div
             class="cursor-pointer custom-btn d-flex align-items-center custom-border-btn mb-1 mb-md-0"
           >
             <b-form-checkbox v-model="selectCourse" value="true" />
             <p class="m-0 custom-btn-text custom-border-btn-text">
               Select Cousre
             </p>
-          </div></b-col
-        >
+          </div> -->
+        </b-col>
 
         <b-col md="9">
           <b-row class="justify-content-end">
@@ -49,16 +49,16 @@
             <b-col class="pl-0 px-md-1 pr-lg-0" md="5" lg="3">
               <b-form-group>
                 <v-select
-                  v-model="selected"
+                  v-model="selected.language"
                   :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                   label="title"
-                  :options="option"
+                  :options="language"
                   :class="
                     windowSize === 'lg' || windowSize === 'xl'
                       ? 'select-size-lg'
                       : ''
                   "
-                  placeholder="User Segments"
+                  placeholder="Language"
                 /> </b-form-group></b-col
             ><b-col class="pr-0" sm="6" md="2">
               <div
@@ -70,7 +70,7 @@
           </b-row>
         </b-col>
       </b-row>
-    </div> -->
+    </div>
     <!-- Org courses  -->
     <b-row class="padding--x-uni">
       <b-col
@@ -119,7 +119,8 @@
 </template>
 
 <script>
-import { BRow, BCol } from "bootstrap-vue";
+import { BRow, BCol, BFormGroup } from "bootstrap-vue";
+import vSelect from "vue-select";
 import Courses from "@/components/Courses.vue";
 import designMixin from "@/mixins/designMixin.js";
 import DistributeItem from "@/modals/DistributeItem.vue";
@@ -129,16 +130,24 @@ export default {
   components: {
     BCol,
     BRow,
+    BFormGroup,
+    vSelect,
     Courses,
     DistributeItem,
   },
   data() {
     return {
       option: [
-        { title: "Square" },
-        { title: "Rectangle" },
-        { title: "Rombo" },
-        { title: "Romboid" },
+        { title: "Listening" },
+        { title: "Watching" },
+        { title: "Reading" },
+        { title: "Interacting" },
+      ],
+      language: [
+        { title: "English" },
+        { title: "Portuguese" },
+        { title: "Spanish" },
+        { title: "Italiane" },
       ],
       selected: "",
       selectCourse: false,
@@ -149,9 +158,7 @@ export default {
   computed: {
     orgBg() {
       return {
-        background: `linear-gradient(${this.themeColor + "BF"}, ${
-          this.themeColor + "BF"
-        }), url(${require(`@/assets/images/gala-bg.png`)})`,
+        background: `url(${require(`@/assets/images/banner/eth-global.png`)})`,
       };
     },
     suggestionBg() {
