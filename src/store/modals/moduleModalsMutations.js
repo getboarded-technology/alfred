@@ -8,4 +8,7 @@ export default {
   OPEN_DISTRIBUTE_LIBRARY_POPUP(state, value) {
     state.distributeItemPopup = value;
   },
+  OPEN_VERIFY_BOT_POPUP(state, value) {
+    state.verifyPopup = value;
+  },
 };

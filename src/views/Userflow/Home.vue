@@ -31,11 +31,11 @@
         <OrgItemCard
           v-show="orgAssignedItems && orgAssignedItems.length > 0"
           v-for="(item, i) in orgAssignedItems"
-          :key="i"
+          :key="i + 'orgItems'"
           :feed="item"
         />
         <TaskCard
-          v-show="feedItems && feedItems.length > 0"
+          v-show="feedData && feedData.length > 0"
           v-for="(feed, index) in feedData"
           :key="index"
           :feed="feed"

@@ -132,7 +132,7 @@ export default {
       for (let i = 0; i < this.selectedUsers.length; i++) {
         const payload = {
           ...this.details,
-          ...{ userId: this.selectedUsers[i].userId },
+          ...{ userId: this.selectedUsers[i]._id },
           ...{ task: this.selectedItem },
           ...{ taskId: this.selectedItem.itemId },
           ...{ organizationId: "641ed84742fe9010218b5293" },

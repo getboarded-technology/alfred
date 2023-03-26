@@ -72,13 +72,13 @@
     </div>
 
     <!-- chatbot modal  -->
-    <chatbot-modal v-if="chatBotPopup" class="position-absolute" validateFormId="UzMUt1QQ"/>
+    <verify-modal v-if="verifyPopup" class="position-absolute" :selectedItem="selectedItem"/>
   </div>
 </template>
 
 <script>
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
-import ChatbotModal from "@/modals/ChatbotModal.vue";
+import VerifyModal from "@/modals/VerifyModal.vue";
 // this.$toast({
 //   component: ToastificationContent,
 //   props: {
@@ -92,17 +92,18 @@ export default {
   data() {
     return {
       taskStatus: "do",
+      selectedItem: {},
     };
   },
   components: {
-    ChatbotModal,
+    VerifyModal,
   },
   computed: {
     userData() {
       return this.$store.state.user.user;
     },
-    chatBotPopup() {
-      return this.$store.state.modals.chatBotPopup;
+    verifyPopup() {
+      return this.$store.state.modals.verifyPopup;
     },
   },
   props: {
@@ -124,6 +125,7 @@ export default {
     updateStatus(feed, value) {
       this.taskStatus = value.toLowerCase();
       this.status = feed.status;
+
       const payload = {
         type: feed.type,
         getboardedId: "625ef69e86d2e700203ab6b2",
@@ -156,6 +158,7 @@ export default {
               });
             }
             if (this.taskStatus === "done") {
+              this.selectedItem = feed;
               //   const payload = {
               //     id: this.userData._id,
               //     updatedDetails: { xp: this.userData.xp + 15 },
@@ -178,8 +181,7 @@ export default {
                   variant: "success",
                 },
               });
-
-              this.$store.commit("modals/OPEN_CHAT_BOT_POPUP", true);
+              this.$store.commit("modals/OPEN_VERIFY_BOT_POPUP", true);
             }
             // this.queries = !this.queries;
             this.$emit("recommendation", feed.itemId, true);

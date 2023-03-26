@@ -1,7 +1,7 @@
 <template>
   <div
-    v-if="chatBotPopup"
-    @click="$store.commit('modals/OPEN_CHAT_BOT_POPUP', false)"
+    v-if="verifyPopup"
+    @click="$store.commit('modals/OPEN_VERIFY_BOT_POPUP', false)"
     class="py-3 md-pd d-flex align-items-center w-100 h-100 justify-content-end chatbot__modal__container position-absolute"
   >
     <section
@@ -10,7 +10,7 @@
       :class="`light-theme`"
     >
       <div
-        @click="$store.commit('modals/OPEN_CHAT_BOT_POPUP', false)"
+        @click="$store.commit('modals/OPEN_VERIFY_BOT_POPUP', false)"
         class="d-flex position-absolute align-items-center justify-content-center cross-icon cursor-pointer"
         :class="`cross-icon-light`"
       >
@@ -18,11 +18,15 @@
       </div>
       <iframe
         class="w-100 h-100"
-        :src="`https://gtbrdd.typeform.com/c/${formId}#first_name=${encodeURIComponent(
+        :src="`https://gtbrdd.typeform.com/c/UzMUt1QQ#first_name=${encodeURIComponent(
           `${userData.firstName}`
         )}&email=${userData.email}&org=${constants.orgName}&gbuid=${
           userData._id
-        }&gborgid=${constants.orgId}&tzn=${encodeURIComponent(timeZone)}`"
+        }&gborgid=${constants.orgId}&tzn=${encodeURIComponent(
+          timeZone
+        )}&learningid=${selectedItem.taskId}&learningtitle=${
+          selectedItem.task.title
+        }`"
         frameBorder="0"
       ></iframe>
     </section>
@@ -36,12 +40,12 @@ export default {
     return {
       constants,
       timeZone: "",
-      formId: "J9poDQqx",
+      item: {},
     };
   },
   props: {
-    validateForm: {
-      type: Boolean,
+    selectedItem: {
+      type: Object,
     },
   },
   computed: {
@@ -51,21 +55,21 @@ export default {
     userData() {
       return this.$store.state.user.user;
     },
-    chatBotPopup() {
-      return this.$store.state.modals.chatBotPopup;
+    verifyPopup() {
+      return this.$store.state.modals.verifyPopup;
     },
   },
   watch: {
-    validateForm: {
+    selectedItem: {
       handler(newVal) {
-        console.log(newVal);
-        return newVal;
+        this.item = newVal;
       },
       deep: true,
       immediate: true,
     },
   },
   mounted() {
+    console.log(this.selectedItem);
     this.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   },
 };
