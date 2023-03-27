@@ -9,12 +9,10 @@
           height: 100% !important;
           /* object-it: contain !important; */
         "
-      >
+      />
     </div>
     <div class="createBoardCard-content">
-      <h3 class="createBoardCard-title">
-        Create your first board
-      </h3>
+      <h3 class="createBoardCard-title">Create your first board</h3>
       <p class="createBoardCard-desc">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum urna
         nunc. Mauris malesuada ultrices leo ac cursus. Donec augue libero,
@@ -30,7 +28,7 @@
           height: 100% !important;
           /* object-it: contain !important; */
         "
-      >
+      />
     </div>
   </div>
 </template>

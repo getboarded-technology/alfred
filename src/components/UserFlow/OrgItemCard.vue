@@ -138,9 +138,7 @@ export default {
 
       this.$store
         .dispatch("feed/updateCourseStatus", payload)
-        .then((res) => {
-          console.log(res);
-
+        .then(() => {
           if (this.taskStatus === "notInterested") {
             this.queries = !this.queries;
             this.$emit("recommendation", feed.itemId);
@@ -202,9 +200,7 @@ export default {
             });
           }
         })
-        .catch((err) => {
-          console.log(err);
-        })
+        .catch(() => {})
         .finally(() => {
           this.disableLink = false;
         });

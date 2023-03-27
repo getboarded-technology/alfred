@@ -153,7 +153,6 @@ export default {
   },
   mounted() {
     this.orgId = this.$route.params.orgId;
-    console.log(this.orgId);
   },
 };
 </script>

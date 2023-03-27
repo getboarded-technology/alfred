@@ -139,10 +139,9 @@ export default {
       return this.$store.state.user.user;
     },
     walletAddress() {
-      return this.$store.state.user.user.walletAddress;
-    },
-    orgWalletAddress() {
-      return this.$store.state.org.org.walletAddress;
+      return this.$store.state.org.org.walletAddress
+        ? this.$store.state.org.org.walletAddress
+        : this.$store.state.user.user.walletAddress;
     },
     avatarNameGenerator() {
       return this.$store.state.user.avatarNameGenerator;

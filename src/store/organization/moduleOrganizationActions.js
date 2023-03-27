@@ -23,4 +23,10 @@ export default {
     );
     return token.data;
   },
+  async getOrgAssignedTask(_, payload) {
+    const token = await axios.get(
+      `${constants.apiUrl}org/get-approved-task/${payload.orgId}`
+    );
+    return token.data;
+  },
 };
