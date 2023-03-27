@@ -6,6 +6,7 @@ import app from './app'
 import appConfig from './app-config'
 import verticalMenu from './vertical-menu'
 import user from './user/moduleUser'
+import org from './organization/moduleOrganization'
 import resumeParser from "./resume-parser/moduleResumeParser";
 import moduleFeed from "./feed/moduleFeed.js";
 import modals from './modals/moduleModals';
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     appConfig,
     verticalMenu,
     user,
+    org,
     modals,
     resumeParser,
     feed: moduleFeed,

@@ -58,4 +58,11 @@ export default {
     );
     return tasks;
   },
+  async updateAssignTask(_, payload) {
+    const tasks = await axios.post(
+      `${constants.apiUrl}org/assign-task`,
+      payload
+    );
+    return tasks;
+  },
 };

@@ -1,4 +1,4 @@
-import  { isUserLoggedIn, getAccessToken } from '@/services/auth.service';
+import { isUserLoggedIn, getAccessToken } from "@/services/auth.service";
 
 export default {
   avatarNameGenerator: (f, l) => {
@@ -9,7 +9,7 @@ export default {
     }
   },
   walletAddress: "",
-  user:  {},
-  accessToken: getAccessToken() || '',
+  user: {},
+  accessToken: getAccessToken() || "",
   isUserLoggedIn: isUserLoggedIn(),
 };

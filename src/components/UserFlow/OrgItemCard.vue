@@ -72,7 +72,11 @@
     </div>
 
     <!-- chatbot modal  -->
-    <verify-modal v-if="verifyPopup" class="position-absolute" :selectedItem="selectedItem"/>
+    <verify-modal
+      v-if="verifyPopup"
+      class="position-absolute"
+      :selectedItem="selectedItem"
+    />
   </div>
 </template>
 
@@ -124,13 +128,12 @@ export default {
   methods: {
     updateStatus(feed, value) {
       this.taskStatus = value.toLowerCase();
-      this.status = feed.status;
 
       const payload = {
-        type: feed.type,
+        type: feed.task.type,
         getboardedId: "625ef69e86d2e700203ab6b2",
-        itemId: feed.itemId,
-        status: feed.status,
+        itemId: feed.taskId,
+        status: this.taskStatus,
       };
 
       this.$store
@@ -159,18 +162,20 @@ export default {
             }
             if (this.taskStatus === "done") {
               this.selectedItem = feed;
-              //   const payload = {
-              //     id: this.userData._id,
-              //     updatedDetails: { xp: this.userData.xp + 15 },
-              //   };
-              //   this.$store
-              //     .dispatch("user/editUserData", payload)
-              //     .then((res) => {
-              //       console.log(res);
-              //     })
-              //     .catch(() => {
-              //       return;
-              //     });
+              const payload = {
+                userId: this.userData._id,
+                organizationId: "641ed84742fe9010218b5293",
+                taskId: feed.taskId,
+                status: this.taskStatus,
+              };
+              this.$store
+                .dispatch("user/updateAssignTask", payload)
+                .then(() => {
+                  return;
+                })
+                .catch(() => {
+                  return;
+                });
 
               this.$toast({
                 component: ToastificationContent,

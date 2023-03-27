@@ -39,11 +39,21 @@ export default {
       web3Provider: "",
       signer: "",
       contractAddress: "0x2ff26C2A2fCf7ead5a1b8133303a33367b3B7F59",
+      tokenAddress: "0x7007D4Dc65D768e275DDA842deB1cD793cf99642",
     };
   },
   computed: {
     userData() {
       return this.$store.state.user.user;
+    },
+  },
+  watch: {
+    userData: {
+      handler(newVal) {
+        newVal && newVal.walletAddress ? this.getBalance() : "";
+      },
+      deep: true,
+      immediate: true,
     },
   },
   methods: {
@@ -59,16 +69,15 @@ export default {
         // Prompt user for account connections
         await this.web3Provider.send("eth_requestAccounts", []);
         this.signer = this.web3Provider.getSigner();
-        console.log("Account:", await this.signer.getAddress());
+        //console.log("Account:", await this.signer.getAddress());
       } else {
-        console.log("Window is undefined");
+        //console.log("Window is undefined");
       }
     },
     async redeemXpForKnowledge() {
       const chainId = await window.ethereum.request({ method: "eth_chainId" });
       this.connectWeb3();
       const signersAddress = await this.signer.getAddress();
-      console.log(signersAddress);
       const { signature, messageHash } = await signingMessage(
         this.xpAmount,
         this.signer
@@ -82,11 +91,49 @@ export default {
             contractAddress: this.contractAddress,
             chainId: parseInt(chainId, 16).toString(),
           })
-          .then((res) => console.log(res));
+          .then((res) => {
+            if (res) {
+              const payload = {
+                id: this.userData._id,
+                updatedDetails: { xp: this.userData.xp - this.userData.xp },
+              };
+              this.$store
+                .dispatch("user/editUserData", payload)
+                .then(() => {
+                  //console.log(res);
+                })
+                .catch(() => {
+                  return;
+                });
+            }
+          })
+          .catch(() => {
+            //console.log(err);
+          });
       } else {
-        console.log("Signature is invalid");
+        //console.log("Signature is invalid");
       }
     },
+
+    async getBalance() {
+      const chainId = await window.ethereum.request({ method: "eth_chainId" });
+      const payload = {
+        tokenAddress: this.tokenAddress,
+        signerAddress: this.userData.walletAddress,
+        chainId: parseInt(chainId, 16).toString(),
+      };
+      this.$store
+        .dispatch("org/getOrgBalance", payload)
+        .then(() => {
+          //console.log(res);
+        })
+        .catch(() => {
+          //console.log(err);
+        });
+    },
+  },
+  created() {
+    this.getBalance();
   },
 };
 </script>

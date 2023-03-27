@@ -3,4 +3,5 @@ export default {
   chatBotPopup: false,
   distributeItemPopup: false,
   verifyPopup: false,
+  modifyOrgPopup: false,
 };

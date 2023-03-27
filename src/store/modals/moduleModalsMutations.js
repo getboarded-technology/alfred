@@ -11,4 +11,8 @@ export default {
   OPEN_VERIFY_BOT_POPUP(state, value) {
     state.verifyPopup = value;
   },
+  OPEN_MODIFY_ORG_POPUP(state, value) {
+    state.modifyOrgPopup = value;
+  },
+  
 };

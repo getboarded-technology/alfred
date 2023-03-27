@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import DashBoard from "@/layouts/DashBoard.vue";
 import store from "@/store/index";
-// import SecondaryDashboard from '@/layouts/SecondaryDashboard.vue'
+import SecondaryDashboard from "@/layouts/SecondaryDashboard.vue";
 
 Vue.use(VueRouter);
 
@@ -22,16 +22,17 @@ const router = new VueRouter({
         authenticationRequired: true,
       },
     },
-    // {
-    //   path: '/organization-home',
-    //   name: 'dashboard',
-    //   component: () => import('@/views/organization/OrganizationHome.vue'),
-    //   meta: {
-    //     layout: SecondaryDashboard,
-    //   },
-    // },
     {
-      path: "/library",
+      path: "/organization-home/:orgId",
+      name: "dashboard",
+      component: () => import("@/views/OrgFlow/Home.vue"),
+      meta: {
+        layout: SecondaryDashboard,
+        authenticationRequired: true,
+      },
+    },
+    {
+      path: "/library/:orgId",
       name: "library",
       component: () => import("@/views/Home.vue"),
       meta: {

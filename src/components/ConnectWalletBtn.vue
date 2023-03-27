@@ -141,6 +141,9 @@ export default {
     walletAddress() {
       return this.$store.state.user.user.walletAddress;
     },
+    orgWalletAddress() {
+      return this.$store.state.org.org.walletAddress;
+    },
     avatarNameGenerator() {
       return this.$store.state.user.avatarNameGenerator;
     },
@@ -194,6 +197,17 @@ export default {
       const account = accounts[0];
       this.move(account);
       this.$store.commit("user/UPDATE_WALLET_INFO", account);
+      const payload = {
+        walletAddress: account,
+      };
+      this.$store
+        .dispatch("user/saveUserDetails", payload)
+        .then((res) => {
+          this.move(res.data.user.walletAddress);
+        })
+        .catch(() => {
+          return;
+        });
     },
     async walletConnect(web3) {
       const provider = new WalletConnectProvider({

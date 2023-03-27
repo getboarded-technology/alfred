@@ -1,18 +1,12 @@
 <template>
   <div class="sideBar-mainContainer">
-    <div
-      id="sideBar"
-      class="sideBar"
-    >
-      <div
-        class="sideBar-logo"
-        @click="toggleSideBar"
-      >
+    <div id="sideBar" class="sideBar">
+      <div class="sideBar-logo" @click="toggleSideBar">
         <img
           src="@/assets/images/logo/alfred.svg"
           alt="Getboarded Logo"
           style="width: 100%; height: 100%; object-fit: contain"
-        >
+        />
       </div>
       <div class="sideBar-nav">
         <router-link
@@ -27,33 +21,20 @@
         </router-link>
       </div>
     </div>
-    <div
-      id="menuIcon"
-      class="sideBar-menu-icon"
-    >
-      <feather-icon
-        icon="MenuIcon"
-        size="20"
-        @click="toggleSideBar"
-      />
+    <div id="menuIcon" class="sideBar-menu-icon">
+      <feather-icon icon="MenuIcon" size="20" @click="toggleSideBar" />
     </div>
     <div class="sideBar-toggleMenu">
-      <div
-        id="sideDrawer"
-        class="sideDrawer"
-      >
+      <div id="sideDrawer" class="sideDrawer">
         <div class="sideDrawer-topContainer">
           <div class="sideDrawer-logo">
             <img
               src="@/assets/images/logo/alfred.svg"
               alt="Getboarded Logo"
               style="width: 100%; height: 100%; object-fit: contain"
-            >
+            />
           </div>
-          <div
-            class="sideDrawer-toggleMenu-icon"
-            @click="toggleSideBar"
-          >
+          <div class="sideDrawer-toggleMenu-icon" @click="toggleSideBar">
             <feather-icon
               icon="XIcon"
               size="25"
@@ -83,18 +64,18 @@
 </template>
 
 <script>
-import category from '@/assets/images/svg/sidebar/category.vue'
-import rocket from '@/assets/images/svg/sidebar/rocket.vue'
-import chat from '@/assets/images/svg/sidebar/chat.vue'
-import heart from '@/assets/images/svg/sidebar/heart.vue'
-import mace from '@/assets/images/svg/sidebar/mace.vue'
-import bank from '@/assets/images/svg/sidebar/bank.vue'
-import settings from '@/assets/images/svg/sidebar/settings.vue'
-import briefcase from '@/assets/images/svg/sidebar/briefcase.vue'
-import FeatherIcon from '@/@core/components/feather-icon/FeatherIcon.vue'
+import category from "@/assets/images/svg/sidebar/category.vue";
+import rocket from "@/assets/images/svg/sidebar/rocket.vue";
+import chat from "@/assets/images/svg/sidebar/chat.vue";
+import heart from "@/assets/images/svg/sidebar/heart.vue";
+import mace from "@/assets/images/svg/sidebar/mace.vue";
+import bank from "@/assets/images/svg/sidebar/bank.vue";
+import settings from "@/assets/images/svg/sidebar/settings.vue";
+import briefcase from "@/assets/images/svg/sidebar/briefcase.vue";
+import FeatherIcon from "@/@core/components/feather-icon/FeatherIcon.vue";
 
 export default {
-  name: 'SideBar',
+  name: "SideBar",
   components: {
     category,
     rocket,
@@ -112,9 +93,9 @@ export default {
       isExpanded: false,
       routes: [
         {
-          name: 'Home',
-          icon: 'category',
-          path: '/',
+          name: "Home",
+          icon: "category",
+          path: "/",
         },
         // {
         //   name: 'Board',
@@ -142,9 +123,9 @@ export default {
         //   path: '/bank',
         // },
         {
-          name: 'Settings',
-          icon: 'settings',
-          path: '/settings',
+          name: "Settings",
+          icon: "settings",
+          path: "/settings",
         },
         // {
         //   name: 'Briefcase',
@@ -152,29 +133,29 @@ export default {
         //   path: '/briefcase',
         // },
       ],
-    }
+    };
   },
   methods: {
     toggleSideBar() {
-      console.log('toggleSideBar')
-      const drawer = document.getElementById('sideDrawer')
-      const menuIcon = document.getElementById('menuIcon')
+      console.log("toggleSideBar");
+      const drawer = document.getElementById("sideDrawer");
+      const menuIcon = document.getElementById("menuIcon");
       //  check if display is none
-      if (drawer.style.display === 'none') {
-        menuIcon.style.display = 'none'
-        drawer.style.display = 'block '
+      if (drawer.style.display === "none") {
+        menuIcon.style.display = "none";
+        drawer.style.display = "block ";
       } else {
-        menuIcon.style.display = 'flex'
-        drawer.style.display = 'none'
+        menuIcon.style.display = "flex";
+        drawer.style.display = "none";
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/layouts/sideBar.scss';
-.sidebar{
+@import "@/assets/scss/layouts/sideBar.scss";
+.sidebar {
   height: 90vh;
 }
 </style>

@@ -10,27 +10,27 @@ import {
 let socialHandles = [
   {
     icon: Linkedin,
-    link: "https://www.linkedin.com/company/getboarded/mycompany/",
+    link: "/",
   },
   {
     icon: Twitter,
-    link: "https://twitter.com/gtbrdd",
+    link: "/",
   },
   {
     icon: Facebook,
-    link: "https://www.facebook.com/Getboarded",
+    link: "/",
   },
   {
     icon: Instagram,
-    link: "https://www.instagram.com/getboarded/",
+    link: "/",
   },
   {
     icon: Medium,
-    link: "https://medium.com/@gtbrdd",
+    link: "/",
   },
   {
     icon: Github,
-    link: "/",
+    link: "https://github.com/getboarded-technology/alfred/tree/chirag",
   },
 ];
 
