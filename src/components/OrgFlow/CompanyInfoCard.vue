@@ -102,7 +102,7 @@ export default {
   data() {
     return {
       tokenAddress: "0x7007D4Dc65D768e275DDA842deB1cD793cf99642",
-      signerAddress: "0xf0f2EF8ce3813f5fb26b0E4A6271a9a7DC654Ba9",
+      signerAddress: "0x2ff26C2A2fCf7ead5a1b8133303a33367b3B7F59",
     };
   },
   props: {

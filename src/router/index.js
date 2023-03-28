@@ -32,6 +32,17 @@ const router = new VueRouter({
       },
     },
     {
+      path: "/org-profile/details/:orgId",
+      name: "user-details",
+      component: () => import("@/views/OrgFlow/OrgProfile.vue"),
+      meta: {
+        layout: "full",
+        title: "Organization Details",
+        pageTitle: "Organization Details",
+        authenticationRequired: true,
+      },
+    },
+    {
       path: "/library/:orgId",
       name: "library",
       component: () => import("@/views/Home.vue"),
@@ -88,10 +99,10 @@ const router = new VueRouter({
         layout: "full",
       },
     },
-    {
-      path: "*",
-      redirect: "error-404",
-    },
+    // {
+    //   path: "*",
+    //   redirect: "error-404",
+    // },
   ],
 });
 

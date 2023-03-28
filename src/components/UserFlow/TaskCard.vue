@@ -1,5 +1,5 @@
 <template>
-  <div class="task-card">
+  <div class="task-card" @click="openLink(feed.url)">
     <div class="task-card-top-section">
       <div class="task-card-top-section-img" v-if="feed.xp">
         <img
@@ -13,7 +13,9 @@
           style="width: 100%; height: 100%; object-fit: cover"
         />
       </div>
-      <h2 class="task-card-top-section-heading" v-if="feed.xp">Assigned By ETHGlobal</h2>
+      <h2 class="task-card-top-section-heading" v-if="feed.xp">
+        Assigned By ETHGlobal
+      </h2>
       <h2 class="task-card-top-section-heading" v-else>{{ feed.source }}</h2>
       <h2 class="task-card-top-section-daily" ref="xp" v-if="feed.xp">
         {{ feed.xp }}
@@ -84,6 +86,7 @@ export default {
   data() {
     return {
       taskStatus: "do",
+      isLinkEnabled: true,
     };
   },
   computed: {
@@ -107,7 +110,13 @@ export default {
     },
   },
   methods: {
+    openLink(link) {
+      if (link && this.isLinkEnabled) {
+        window.open(link, "_blank");
+      }
+    },
     updateStatus(feed, value) {
+      this.isLinkEnabled = false;
       this.taskStatus = value.toLowerCase();
       this.status = feed.status;
       const payload = {

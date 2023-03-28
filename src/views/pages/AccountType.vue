@@ -6,11 +6,7 @@
           <div>
             <img
               class="account__type__container__logo md:w-4/5"
-              :src="
-                theme === 'dark'
-                  ? require('@/assets/images/logo/alfred.png')
-                  : require('@/assets/images/logo/alfred.png')
-              "
+              :src="require('@/assets/images/logo/alfred.png')"
               alt="Banked"
             />
           </div>
@@ -86,7 +82,7 @@ export default {
           imgSrc: personal,
         },
         {
-          routeTo: "/organization/name",
+          routeTo: "/org-profile/details/",
           type: "organization",
           about: "I want to create an Organization",
           imgSrc: organization,
@@ -105,12 +101,12 @@ export default {
         id: this.userData._id,
         updatedDetails: { accountType: data.type },
       };
-      this.$router.push(data.routeTo);
       this.$store
         .dispatch("user/editUserData", payload)
-        .then((res) => {
-          console.log(res);
-          this.$router.push(data.routeTo);
+        .then(() => {
+          data.type === "organization"
+            ? this.$router.push(data.routeTo + '641ed84742fe9010218b5293')
+            : this.$router.push(data.routeTo);
         })
         .catch(() => {
           return;

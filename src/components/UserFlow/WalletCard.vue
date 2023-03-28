@@ -8,7 +8,7 @@
       <h1 class="wallet-card-wallet-text">Wallet</h1>
       <h1 class="wallet-card-wallet-amount">{{ userData.xp }} XP's</h1>
       <h1 class="wallet-card-wallet-amount w-100">
-        {{ userData.xp }} Knowledge Tokens
+        {{ (userData.xp)/100 }} Knowledge Tokens
       </h1>
       <!-- <div class="wallet-card-sync-pending">
         <div>

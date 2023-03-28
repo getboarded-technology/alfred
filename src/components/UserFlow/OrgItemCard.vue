@@ -1,5 +1,5 @@
 <template>
-  <div class="task-card">
+  <div class="task-card" @click="openLink(feed.task.url)">
     <div class="task-card-top-section">
       <div class="task-card-top-section-img" v-if="feed.xp">
         <img
@@ -97,6 +97,7 @@ export default {
     return {
       taskStatus: "do",
       selectedItem: {},
+      isLinkEnabled: true,
     };
   },
   components: {
@@ -126,7 +127,13 @@ export default {
     },
   },
   methods: {
+    openLink(link) {
+      if (link && this.isLinkEnabled) {
+        window.open(link, "_blank");
+      }
+    },
     updateStatus(feed, value) {
+      this.isLinkEnabled = false;
       this.taskStatus = value.toLowerCase();
 
       const payload = {

@@ -29,4 +29,16 @@ export default {
     );
     return token.data;
   },
+  async createOrg({ commit }, payload) {
+    const org = await axios.post(`${constants.apiUrl}org/create`, payload);
+    commit("SET_ORG_DETAILS", org.data);
+    return org.data;
+  },
+  async approveTask(_, payload) {
+    const task = await axios.post(
+      `${constants.apiUrl}org/approve-task`,
+      payload
+    );
+    return task.data;
+  },
 };

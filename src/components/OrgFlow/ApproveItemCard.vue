@@ -1,6 +1,6 @@
 <template>
   <div
-    class="assigned-task px-2 py-2 d-flex align-items-center justify-content-between"
+    class="assigned-task px-2 py-2 my-50 d-flex align-items-center justify-content-between"
   >
     <div class="d-flex align-items-center">
       <div class="rounded-full overflow-hidden">
@@ -35,7 +35,7 @@
           Approve Task
         </b-button>
       </div>
-      <div v-else-if="task.isApproved && isApproved">
+      <div v-else-if="task.isApproved || isApproved">
         <b-button
           type="submit"
           block
@@ -74,14 +74,14 @@ export default {
   },
   methods: {
     approveTask() {
-      
+      this.isApproved = true;
       const payload = {
         userId: this.task.user._id,
-        orgId: this.$route.params.orgId,
-        isApproved: this.isApproved,
+        organizationId: this.$route.params.orgId,
+        taskId: this.task.taskId,
       };
       this.$store
-        .dispatch("user/updateAssignTask", payload)
+        .dispatch("org/approveTask", payload)
         .then(() => {
           this.isApproved = true;
           return;

@@ -15,11 +15,11 @@
       >
         X
       </div>
-      <label class="Heading">Add Knowledge Token</label>
+      <label class="Heading">Manage</label>
       <div>
         <b-col>
           <b-row class="flex-column mt-1">
-            <div class="subheading">Assign XPs</div>
+            <div class="subheading">Deposit Knowledge Token</div>
             <input type="text" value="name" v-model="addedTokens" />
           </b-row>
         </b-col>

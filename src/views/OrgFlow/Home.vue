@@ -48,7 +48,6 @@ export default {
         })
         .then((res) => {
           this.assignedTasks = res;
-          console.log(res);
         })
         .catch((err) => {
           return err;
