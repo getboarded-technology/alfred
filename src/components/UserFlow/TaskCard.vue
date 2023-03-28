@@ -157,9 +157,7 @@ export default {
               };
               this.$store
                 .dispatch("user/editUserData", payload)
-                .then((res) => {
-                  console.log(res);
-                })
+                .then(() => {})
                 .catch(() => {
                   return;
                 });

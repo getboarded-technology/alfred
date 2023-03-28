@@ -7,8 +7,18 @@
     <div class="wallet-card-section1">
       <h1 class="wallet-card-wallet-text">Wallet</h1>
       <h1 class="wallet-card-wallet-amount">{{ userData.xp }} XP's</h1>
-      <h1 class="wallet-card-wallet-amount w-100">
-        {{ (userData.xp)/100 }} Knowledge Tokens
+      <h1
+        class="wallet-card-wallet-amount w-100"
+        v-if="
+          !isNaN(
+            parseFloat(
+              parseFloat(userKnowledgeToken) + parseFloat(userData.xp / 100)
+            )
+          )
+        "
+      >
+        {{ parseFloat(userKnowledgeToken) + parseFloat(userData.xp / 100) }}
+        Knowledge Tokens
       </h1>
       <!-- <div class="wallet-card-sync-pending">
         <div>
@@ -40,6 +50,7 @@ export default {
       signer: "",
       contractAddress: "0x2ff26C2A2fCf7ead5a1b8133303a33367b3B7F59",
       tokenAddress: "0x7007D4Dc65D768e275DDA842deB1cD793cf99642",
+      userKnowledgeToken: "",
     };
   },
   computed: {
@@ -100,6 +111,7 @@ export default {
               this.$store
                 .dispatch("user/editUserData", payload)
                 .then(() => {
+                  this.getBalance();
                   //console.log(res);
                 })
                 .catch(() => {
@@ -114,18 +126,21 @@ export default {
         //console.log("Signature is invalid");
       }
     },
-
     async getBalance() {
       const chainId = await window.ethereum.request({ method: "eth_chainId" });
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const account = accounts[0];
       const payload = {
         tokenAddress: this.tokenAddress,
-        signerAddress: this.userData.walletAddress,
+        signerAddress: account,
         chainId: parseInt(chainId, 16).toString(),
       };
       this.$store
         .dispatch("org/getOrgBalance", payload)
-        .then(() => {
-          //console.log(res);
+        .then((res) => {
+          this.userKnowledgeToken = res.balance;
         })
         .catch(() => {
           //console.log(err);
