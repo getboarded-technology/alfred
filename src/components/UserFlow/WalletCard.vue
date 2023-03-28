@@ -9,15 +9,9 @@
       <h1 class="wallet-card-wallet-amount">{{ userData.xp }} XP's</h1>
       <h1
         class="wallet-card-wallet-amount w-100"
-        v-if="
-          !isNaN(
-            parseFloat(
-              parseFloat(userKnowledgeToken) + parseFloat(userData.xp / 100)
-            )
-          )
-        "
+        v-if="!isNaN(parseFloat(parseFloat(userKnowledgeToken)))"
       >
-        {{ parseFloat(userKnowledgeToken) + parseFloat(userData.xp / 100) }}
+        {{ parseFloat(userKnowledgeToken) }}
         Knowledge Tokens
       </h1>
       <!-- <div class="wallet-card-sync-pending">
